@@ -1,48 +1,3 @@
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-lg);
-  margin: var(--spacing-lg) 0;
-}
-
-.result-card {
-  position: relative;
-  padding: var(--spacing-lg);
-  border: 2px solid var(--light-gray);
-  transition: all 0.2s ease;
-}
-
-.result-card h4 {
-  margin-top: var(--spacing-md);
-  margin-bottom: var(--spacing-sm);
-  color: var(--baylor-green);
-}
-
-.result-description {
-  font-size: var(--font-size-sm);
-  color: var(--medium-gray);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.result-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background-color: var(--baylor-cream);
-  border-radius: 50%;
-  font-weight: 700;
-  color: var(--baylor-green);
-  margin-bottom: var(--spacing-md);
-}
-
-.result-card.highlighted {
-  border-color: var(--baylor-gold);
-  background-color: rgba(212, 165, 116, 0.05);
-}
-
 .answer-prompt {
   background-color: rgba(0, 75, 62, 0.05);
   border-left: 4px solid var(--baylor-green);
@@ -55,6 +10,75 @@
   margin: 0;
   color: var(--dark-gray);
   font-size: var(--font-size-base);
+}
+
+.citation-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.citation-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--white);
+  border: 2px solid var(--light-gray);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  color: var(--dark-gray);
+}
+
+.citation-card:hover:not(:disabled) {
+  border-color: var(--baylor-green);
+  background-color: rgba(0, 75, 62, 0.03);
+}
+
+.citation-card.selected {
+  border-color: var(--baylor-green);
+  background-color: rgba(0, 75, 62, 0.05);
+}
+
+.citation-card.correct {
+  border-color: var(--success);
+  background-color: rgba(39, 174, 96, 0.05);
+}
+
+.citation-card.incorrect {
+  border-color: var(--error);
+  background-color: rgba(231, 76, 60, 0.05);
+}
+
+.citation-card:disabled {
+  cursor: default;
+}
+
+.citation-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background-color: var(--baylor-cream);
+  color: var(--baylor-green);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+}
+
+.citation-copy h4 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--baylor-green);
+}
+
+.citation-copy p {
+  margin: 0;
+  color: var(--medium-gray);
+  line-height: 1.7;
 }
 
 .continue-actions {
@@ -71,12 +95,13 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .results-grid {
+  .citation-card {
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    padding: var(--spacing-md);
   }
 
-  .result-card {
-    padding: var(--spacing-md);
+  .citation-label {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }

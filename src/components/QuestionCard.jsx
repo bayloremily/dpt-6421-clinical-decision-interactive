@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Card from './Card'
-import Button from './Button'
 import './QuestionCard.css'
 
 export default function QuestionCard({
@@ -14,19 +13,47 @@ export default function QuestionCard({
 }) {
   const [showFeedback, setShowFeedback] = useState(false)
   const [feedback, setFeedback] = useState('')
+  const [feedbackType, setFeedbackType] = useState('')
+  const hideFeedbackTimeoutRef = useRef(null)
+
+  useEffect(() => {
+    setShowFeedback(false)
+    setFeedback('')
+    setFeedbackType('')
+
+    if (hideFeedbackTimeoutRef.current) {
+      window.clearTimeout(hideFeedbackTimeoutRef.current)
+      hideFeedbackTimeoutRef.current = null
+    }
+  }, [questionNumber])
+
+  useEffect(() => {
+    return () => {
+      if (hideFeedbackTimeoutRef.current) {
+        window.clearTimeout(hideFeedbackTimeoutRef.current)
+      }
+    }
+  }, [])
 
   const handleOptionClick = (option) => {
     if (isAnswered) return
 
     if (option === correctAnswer) {
       setFeedback('Correct! Well done.')
+      setFeedbackType('success')
       setShowFeedback(true)
       onAnswer(option)
     } else {
       setFeedback('Incorrect. Try again.')
+      setFeedbackType('error')
       setShowFeedback(true)
       // Clear feedback after 2 seconds if wrong
-      setTimeout(() => setShowFeedback(false), 2000)
+      hideFeedbackTimeoutRef.current = window.setTimeout(() => {
+        setShowFeedback(false)
+        setFeedback('')
+        setFeedbackType('')
+        hideFeedbackTimeoutRef.current = null
+      }, 2000)
     }
   }
 
@@ -62,7 +89,7 @@ export default function QuestionCard({
 
       {showFeedback && (
         <div
-          className={`feedback ${selectedAnswer === correctAnswer ? 'success' : 'error'}`}
+          className={`feedback ${feedbackType}`}
           role="status"
           aria-live="polite"
         >

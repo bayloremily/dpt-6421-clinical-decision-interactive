@@ -13,6 +13,7 @@ This project guides learners through a staged outpatient physical therapy case i
 - discussing treatment options with a clinical instructor
 - interpreting treatment efficacy findings
 - applying research to a final clinical recommendation
+- making a final treatment-threshold decision before patient arrival
 
 The application is built as a lightweight React + Vite single-page interactive with scene-based progression.
 
@@ -30,10 +31,31 @@ The application is built as a lightweight React + Vite single-page interactive w
 
 - Scene-by-scene guided case progression
 - Quiz-style knowledge checks with immediate feedback
+- Development TOC for jumping between scenes during build-out
 - Literature search and appraisal activities
+- Dialogue scenes with full-screen clinical backdrops
+- Low-volume ambient and cue sound effects for dialogue moments
 - Modal-based viewing of clinical figures and article images
 - Final summary screen with case completion score
 - Restart flow for repeated use in teaching or self-study
+
+## Current Interactive Flow
+
+The current build includes:
+
+- Start screen and rotation welcome scene
+- Patient chart review and Question 1
+- Diagnostic research sequence through Questions 2-6
+- Diagnostic summary slide
+- Lunch/break room dialogue sequence
+- Treatment literature search and Question 7
+- Meta-analysis interpretation through Questions 8-9
+- Article appraisal and Question 10
+- Dialogue follow-up scene
+- Results interpretation and Question 11
+- Functional disability interpretation and Question 12
+- Final lunchroom check-in with Question 13
+- Final wrap-up and score summary
 
 ## Project Structure
 
@@ -41,9 +63,10 @@ The application is built as a lightweight React + Vite single-page interactive w
 src/
   components/   Reusable UI building blocks
   context/      Shared quiz and navigation state
+  hooks/        Shared behavior such as dialogue audio
   scenes/       Interactive case scenes
   styles/       Global design tokens and base styles
-assets/         Clinical images and article figures
+assets/         Clinical images, article figures, and sound effects
 ```
 
 ## Local Development
@@ -82,6 +105,7 @@ npm run preview
 
 - macOS metadata files are excluded from version control through `.gitignore`.
 - Build output is generated into `dist/` and should not be committed.
+- Dialogue scene sound effects are intentionally mixed at low volume for development.
 
 ## Repository
 

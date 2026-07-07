@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { QuizContext } from '../context/QuizContext'
 import Card from '../components/Card'
 import Button from '../components/Button'
@@ -7,8 +7,15 @@ import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import './ForestPlotScene.css'
 
 export default function ForestPlotScene() {
-  const { goToScene, answers, handleAnswer, showImageModal } = useContext(QuizContext)
-  const [currentQuestion, setCurrentQuestion] = useState(8)
+  const {
+    goToScene,
+    answers,
+    handleAnswer,
+    showImageModal,
+    devLocation,
+    updateDevLocation,
+  } = useContext(QuizContext)
+  const currentQuestion = devLocation.forestPlotQuestion
 
   const questions = [
     {
@@ -39,7 +46,7 @@ export default function ForestPlotScene() {
 
   const handleNextQuestion = () => {
     if (currentQuestion === 8) {
-      setCurrentQuestion(9)
+      updateDevLocation({ forestPlotQuestion: 9 })
     } else {
       goToScene('efficacyArticle')
     }
@@ -48,22 +55,21 @@ export default function ForestPlotScene() {
   const isCurrentAnswered = answers[currentQuestion] !== undefined
   const isCurrentCorrect = answers[currentQuestion] === currentQ.correct
 
+  const handleViewStudyOverview = () => {
+    showImageModal(
+      <ImageWithPlaceholder
+        src="/assets/neural-article.png"
+        alt="Neural article study showing meta-analysis overview"
+      />
+    )
+  }
+
   const handleViewForestPlot = () => {
     showImageModal(
-      <div>
-        <h3>Meta-Analysis Results</h3>
-        <ImageWithPlaceholder
-          src="/assets/neural-article.png"
-          alt="Neural article study showing meta-analysis overview"
-        />
-        <h4 style={{ marginTop: 'var(--spacing-lg)', color: 'var(--baylor-green)' }}>
-          Forest Plot
-        </h4>
-        <ImageWithPlaceholder
-          src="/assets/figure-2.png"
-          alt="Forest plot showing individual study results and pooled effect size"
-        />
-      </div>
+      <ImageWithPlaceholder
+        src="/assets/figure-2.png"
+        alt="Forest plot showing individual study results and pooled effect size"
+      />
     )
   }
 
@@ -87,7 +93,7 @@ export default function ForestPlotScene() {
                 src="/assets/neural-article.png"
                 alt="Neural article research overview"
                 className="article-thumbnail"
-                onClick={handleViewForestPlot}
+                onClick={handleViewStudyOverview}
                 isClickable
               />
             </div>
@@ -104,9 +110,6 @@ export default function ForestPlotScene() {
             </div>
           </div>
 
-          <Button onClick={handleViewForestPlot} variant="secondary" className="view-button">
-            View Full Results
-          </Button>
         </Card>
 
         <QuestionCard

@@ -30,38 +30,22 @@ export default function EfficacyArticleScene() {
     <div className="scene-container">
       <div className="scene-content">
         <h1>Efficacy and Generalizability</h1>
-        <p className="subtitle">Understanding research applicability to clinical practice</p>
+        <p className="subtitle">Compare the study population to your patient before applying the findings</p>
 
         <Card className="concept-card">
-          <h3>Key Concept: Study Validity</h3>
+          <p className="question-kicker">Question 10</p>
+          <h3>Looking More Closely at ELDesoky 2016</h3>
           <p>
-            When evaluating whether research findings apply to your patient, you must
-            consider two dimensions:
+            Good choice. ELDesoky 2016 is a randomized controlled trial that found
+            effectiveness of neural mobilization in patients with lumbar
+            radiculopathy.
           </p>
-
-          <div className="concept-grid">
-            <div className="concept-box">
-              <h4>Internal Validity</h4>
-              <p>
-                Whether the study design and methodology are sound and the results are
-                valid within the study population.
-              </p>
-            </div>
-
-            <div className="concept-box">
-              <h4>External Validity</h4>
-              <p>
-                Whether the study results can be generalized and applied to populations
-                beyond the study sample.
-              </p>
-            </div>
-          </div>
 
           <div className="article-section">
             <h4>Study Article</h4>
             <ImageWithPlaceholder
               src="/assets/efficacy-article.png"
-              alt="Efficacy article showing treatment outcomes"
+              alt="ELDesoky 2016 article showing neural mobilization outcomes"
               className="article-image"
               onClick={handleViewArticle}
               isClickable
@@ -74,11 +58,37 @@ export default function EfficacyArticleScene() {
               View Full Article
             </Button>
           </div>
+
+          <div className="comparison-grid">
+            <div className="concept-box">
+              <h4>Study Population</h4>
+              <p>
+                The study was performed in 60 patients with chronic low back pain and
+                S1 radiculopathy.
+              </p>
+            </div>
+
+            <div className="concept-box">
+              <h4>Your Patient</h4>
+              <p>
+                Based on the intake forms, your patient presents with acute low back
+                pain and L5 radiculopathy.
+              </p>
+            </div>
+          </div>
+
+          <div className="validity-prompt">
+            <p>
+              Because the population and clinical details are not an exact match, you
+              should think carefully about whether the findings can be generalized to
+              your patient.
+            </p>
+          </div>
         </Card>
 
         <QuestionCard
           questionNumber={10}
-          title="The ability to generalize results to your patient is called:"
+          title="You are a little concerned about the study’s ________, or the ability to generalize the results from this article to your patient."
           options={['Internal validity', 'External validity', 'Measurement validity']}
           correctAnswer="External validity"
           onAnswer={handleAnswerQuestion}
@@ -89,7 +99,7 @@ export default function EfficacyArticleScene() {
         {answers[10] && (
           <div className="question-actions">
             <Button onClick={handleContinue} size="lg">
-              Continue to Results Interpretation
+              Continue
             </Button>
           </div>
         )}

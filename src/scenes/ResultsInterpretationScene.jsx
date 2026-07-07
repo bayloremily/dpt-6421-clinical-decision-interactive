@@ -26,7 +26,7 @@ export default function ResultsInterpretationScene() {
   }
 
   const handleContinue = () => {
-    goToScene('final')
+    goToScene('studyDialogue')
   }
 
   return (
@@ -77,13 +77,13 @@ export default function ResultsInterpretationScene() {
 
         <QuestionCard
           questionNumber={11}
-          title="Based on the evidence you reviewed, which conclusion is most appropriate for Kathy?"
+          title="To if determine if patients treated with neural mobilization showed more improvement than patients in the control group, which is the most relevant result to look at?"
           options={[
-            'Neural mobilization should be considered because it has supportive evidence and fits her presentation.',
-            'Neural mobilization should be avoided because the evidence only supports diagnosis, not treatment.',
-            'No intervention should be recommended until imaging findings fully normalize.',
+            'A. Main effect of group',
+            'B. Main effect of time',
+            'C. Interaction between time and group.',
           ]}
-          correctAnswer="Neural mobilization should be considered because it has supportive evidence and fits her presentation."
+          correctAnswer="C. Interaction between time and group."
           onAnswer={handleAnswerQuestion}
           isAnswered={answers[11] !== undefined}
           selectedAnswer={answers[11]}
@@ -99,7 +99,7 @@ export default function ResultsInterpretationScene() {
               </p>
             </div>
             <Button onClick={handleContinue} size="lg">
-              View Final Summary
+              Continue
             </Button>
           </div>
         )}

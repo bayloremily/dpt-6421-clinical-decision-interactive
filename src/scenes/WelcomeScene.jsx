@@ -8,7 +8,7 @@ export default function WelcomeScene() {
   const { goToScene } = useContext(QuizContext)
 
   const handleStart = () => {
-    goToScene('patientChart')
+    goToScene('rotationWelcome')
   }
 
   return (

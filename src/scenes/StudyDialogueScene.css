@@ -1,0 +1,149 @@
+.study-dialogue-scene {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+.study-dialogue-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.study-dialogue-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.study-dialogue-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 36, 30, 0.74) 0%, rgba(0, 36, 30, 0.48) 38%, rgba(0, 36, 30, 0.24) 62%, rgba(0, 36, 30, 0.4) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.32) 100%);
+}
+
+.study-dialogue-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(4.5rem + var(--spacing-lg)) var(--spacing-xl) var(--spacing-xl);
+}
+
+.study-dialogue-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  max-width: 760px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.study-dialogue-start-card {
+  min-height: 260px;
+  justify-content: center;
+}
+
+.study-dialogue-start-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  text-align: center;
+}
+
+.study-dialogue-start-copy h1 {
+  margin: 0;
+}
+
+.study-dialogue-start-copy p {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+}
+
+.study-dialogue-progress {
+  font-size: var(--font-size-sm);
+  color: var(--medium-gray);
+  text-align: right;
+  margin-bottom: var(--spacing-md);
+}
+
+.study-dialogue-message {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.study-speaker {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.study-speaker.ci {
+  background-color: rgba(0, 75, 62, 0.1);
+  color: var(--baylor-green);
+}
+
+.study-speaker.you,
+.study-speaker.student {
+  background-color: rgba(212, 165, 116, 0.12);
+  color: var(--dark-gray);
+}
+
+.study-speaker-name {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.study-speaker-text {
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  color: var(--dark-gray);
+  margin: 0;
+}
+
+.study-dialogue-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.study-dialogue-button {
+  min-width: 220px;
+}
+
+@media (max-width: 768px) {
+  .study-dialogue-content {
+    align-items: flex-end;
+    padding: calc(4.25rem + var(--spacing-md)) var(--spacing-md) var(--spacing-md);
+  }
+
+  .study-dialogue-card {
+    min-height: 360px;
+  }
+
+  .study-speaker-text,
+  .study-dialogue-start-copy p {
+    font-size: var(--font-size-base);
+  }
+
+  .study-dialogue-button {
+    width: 100%;
+  }
+}

@@ -4,6 +4,12 @@ export const QuizContext = createContext()
 
 export const QuizProvider = ({ children }) => {
   const [currentScene, setCurrentScene] = useState('welcome')
+  const [devLocation, setDevLocation] = useState({
+    patientChartView: 'chart',
+    researchQuestion: 2,
+    treatmentView: 'search',
+    forestPlotQuestion: 8,
+  })
   const [completedChartTabs, setCompletedChartTabs] = useState(new Set())
   const [answers, setAnswers] = useState({})
   const [searchQueries, setSearchQueries] = useState({})
@@ -37,6 +43,22 @@ export const QuizProvider = ({ children }) => {
     window.scrollTo(0, 0)
   }, [])
 
+  const updateDevLocation = useCallback((updates) => {
+    setDevLocation((prev) => ({
+      ...prev,
+      ...updates,
+    }))
+  }, [])
+
+  const goToDevLocation = useCallback((scene, updates = {}) => {
+    setDevLocation((prev) => ({
+      ...prev,
+      ...updates,
+    }))
+    setCurrentScene(scene)
+    window.scrollTo(0, 0)
+  }, [])
+
   const showImageModal = useCallback((content) => {
     setModalContent(content)
     setShowModal(true)
@@ -48,6 +70,12 @@ export const QuizProvider = ({ children }) => {
 
   const resetQuiz = useCallback(() => {
     setCurrentScene('welcome')
+    setDevLocation({
+      patientChartView: 'chart',
+      researchQuestion: 2,
+      treatmentView: 'search',
+      forestPlotQuestion: 8,
+    })
     setCompletedChartTabs(new Set())
     setAnswers({})
     setSearchQueries({})
@@ -65,6 +93,9 @@ export const QuizProvider = ({ children }) => {
         currentScene,
         setCurrentScene,
         goToScene,
+        devLocation,
+        updateDevLocation,
+        goToDevLocation,
         completedChartTabs,
         handleTabClick,
         isChartTabsComplete,

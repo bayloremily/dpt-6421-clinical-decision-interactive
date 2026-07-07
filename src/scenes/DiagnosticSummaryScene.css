@@ -1,0 +1,90 @@
+.diagnostic-summary-content {
+  padding-top: 5rem;
+  padding-bottom: var(--spacing-2xl);
+}
+
+.diagnostic-summary-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.diagnostic-summary-card,
+.diagnostic-summary-sidecar {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.diagnostic-summary-kicker {
+  margin-bottom: var(--spacing-sm);
+  color: var(--baylor-gold);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.diagnostic-summary-card h1 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.diagnostic-summary-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.diagnostic-summary-copy p {
+  margin-bottom: 0;
+  line-height: 1.75;
+}
+
+.diagnostic-summary-actions {
+  margin-top: var(--spacing-xl);
+}
+
+.diagnostic-summary-sidecar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  position: sticky;
+  top: 5rem;
+}
+
+.diagnostic-summary-image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+.diagnostic-summary-note {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(0, 75, 62, 0.05) 0%, rgba(212, 165, 116, 0.08) 100%);
+  border: 1px solid rgba(0, 75, 62, 0.08);
+}
+
+.diagnostic-summary-note h2 {
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+}
+
+.diagnostic-summary-note p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .diagnostic-summary-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .diagnostic-summary-sidecar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .diagnostic-summary-content {
+    padding-top: 4.5rem;
+  }
+}

@@ -4,7 +4,7 @@ import Card from '../components/Card'
 import Button from '../components/Button'
 import './FinalScene.css'
 
-const scoredQuestions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+const scoredQuestions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
 const correctAnswers = {
   1: 'Lower extremity neurologic examination',
@@ -17,7 +17,9 @@ const correctAnswers = {
   8: 'Yes',
   9: 'ELDesoky 2016',
   10: 'External validity',
-  11: 'Neural mobilization should be considered because it has supportive evidence and fits her presentation.',
+  11: 'C. Interaction between time and group.',
+  12: 'C. Both A and B are true',
+  13: 'B. Treatment Threshold',
 }
 
 export default function FinalScene() {

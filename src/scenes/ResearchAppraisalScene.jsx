@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { QuizContext } from '../context/QuizContext'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
@@ -6,8 +6,15 @@ import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import './ResearchAppraisalScene.css'
 
 export default function ResearchAppraisalScene() {
-  const { goToScene, answers, handleAnswer, showImageModal } = useContext(QuizContext)
-  const [currentQuestion, setCurrentQuestion] = useState(2)
+  const {
+    goToScene,
+    answers,
+    handleAnswer,
+    showImageModal,
+    devLocation,
+    updateDevLocation,
+  } = useContext(QuizContext)
+  const currentQuestion = devLocation.researchQuestion
 
   const questions = [
     {
@@ -81,9 +88,9 @@ export default function ResearchAppraisalScene() {
   const handleNextQuestion = () => {
     const nextQuestion = currentQuestion + 1
     if (nextQuestion > 6) {
-      goToScene('breakRoom')
+      goToScene('diagnosticSummary')
     } else {
-      setCurrentQuestion(nextQuestion)
+      updateDevLocation({ researchQuestion: nextQuestion })
     }
   }
 
@@ -129,7 +136,7 @@ export default function ResearchAppraisalScene() {
               </div>
             ) : null}
             <Button onClick={handleNextQuestion} size="lg">
-              {currentQuestion === 6 ? 'Continue to Break Room' : 'Next Question'}
+              {currentQuestion === 6 ? 'Continue' : 'Next Question'}
             </Button>
           </div>
         )}

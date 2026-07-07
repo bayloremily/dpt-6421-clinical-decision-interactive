@@ -7,6 +7,12 @@
   position: relative;
 }
 
+.app-container.toc-open .scene-content {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ========================================
    MAIN CONTENT
    ======================================== */
@@ -34,6 +40,12 @@
 @media (max-width: 768px) {
   .scene-content {
     padding: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 901px) {
+  .app-container.toc-open .scene-content {
+    padding-left: calc(var(--spacing-xl) + 17rem);
   }
 }
 

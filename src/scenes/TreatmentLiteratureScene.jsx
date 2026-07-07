@@ -2,8 +2,6 @@ import { useContext, useState } from 'react'
 import { QuizContext } from '../context/QuizContext'
 import Card from '../components/Card'
 import Button from '../components/Button'
-import QuestionCard from '../components/QuestionCard'
-import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import './TreatmentLiteratureScene.css'
 
 export default function TreatmentLiteratureScene() {
@@ -11,15 +9,14 @@ export default function TreatmentLiteratureScene() {
     goToScene,
     answers,
     handleAnswer,
-    isTreatmentLiteratureComplete,
     setIsTreatmentLiteratureComplete,
+    devLocation,
+    updateDevLocation,
   } = useContext(QuizContext)
 
   const [searchInput, setSearchInput] = useState('')
   const [searchAttempt, setSearchAttempt] = useState(false)
   const [showResults, setShowResults] = useState(false)
-  const [showQuestion, setShowQuestion] = useState(false)
-
   const validKeywords = [
     'neural mobilization lumbar radiculopathy',
     'neural mobilisation lumbar radiculopathy',
@@ -39,42 +36,41 @@ export default function TreatmentLiteratureScene() {
     }
   }
 
-  const handleAnswerQuestion = (answer) => {
-    handleAnswer(7, answer)
-  }
-
   const handleContinue = () => {
+    updateDevLocation({ forestPlotQuestion: 8 })
     goToScene('forestPlot')
   }
 
-  if (showQuestion) {
-    return (
-      <div className="scene-container">
-        <div className="scene-content">
-          <h1>Treatment Evidence Evaluation</h1>
-          <QuestionCard
-            questionNumber={7}
-            title="Which study type represents the highest level of evidence for treatment efficacy?"
-            options={[
-              'A. Delphi study',
-              'B. Systematic review and meta-analysis',
-              'C. Randomized controlled trial',
-            ]}
-            correctAnswer="B. Systematic review and meta-analysis"
-            onAnswer={handleAnswerQuestion}
-            isAnswered={answers[7] !== undefined}
-            selectedAnswer={answers[7]}
-          />
-          {answers[7] && (
-            <div className="question-actions">
-              <Button onClick={handleContinue} size="lg">
-                Continue to Forest Plot Analysis
-              </Button>
-            </div>
-          )}
-        </div>
-      </div>
-    )
+  const treatmentCitations = [
+    {
+      id: 'A',
+      value: 'A. Delphi study',
+      studyType: 'Delphi Study',
+      citation:
+        'Thoomes E, Falla D, Cleland JA, Fernandez-de-Las-Penas C, Gallina A, de Graaf M. Conservative management for lumbar radiculopathy based on the stage of the disorder: a Delphi (survey) study. Disabil Rehabil. 2023;45(21):3539-3548.',
+    },
+    {
+      id: 'B',
+      value: 'B. Systematic review and meta-analysis',
+      studyType: 'Systematic Review and Meta-Analysis',
+      citation:
+        'Lin LH, Lin TY, Chang KV, Wu WT, Ozcakar L. Neural Mobilization for Reducing Pain and Disability in Patients with Lumbar Radiculopathy: A Systematic Review and Meta-Analysis. Life (Basel). 2023;13(12):2255.',
+    },
+    {
+      id: 'C',
+      value: 'C. Randomized controlled trial',
+      studyType: 'Randomized Controlled Trial',
+      citation:
+        'Ghasabmahaleh SH, Rezasoltani Z, Dadarkhah A, Hamidipanah S, Mofrad RK, Najafi S. Spinal Manipulation for Subacute and Chronic Lumbar Radiculopathy: A Randomized Controlled Trial. Am J Med. 2021;134(1):135-141.',
+    },
+  ]
+
+  const questionView = devLocation.treatmentView === 'question'
+  const shouldShowResults = showResults || questionView
+
+  const handleAnswerQuestion = (answer) => {
+    handleAnswer(7, answer)
+    updateDevLocation({ treatmentView: 'question' })
   }
 
   return (
@@ -115,7 +111,7 @@ export default function TreatmentLiteratureScene() {
             </div>
           </form>
 
-          {searchAttempt && !showResults && (
+          {searchAttempt && !showResults && !questionView && (
             <div className="search-feedback error" role="status" aria-live="polite">
               <p>
                 No results found. Try searching for neural mobilization or treatment
@@ -124,53 +120,52 @@ export default function TreatmentLiteratureScene() {
             </div>
           )}
 
-          {showResults && (
+          {shouldShowResults && (
             <div className="search-results" role="status" aria-live="polite">
               <h3>Search Results</h3>
 
-              <div className="results-grid">
-                <Card variant="default" className="result-card">
-                  <div className="result-label">A.</div>
-                  <h4>Delphi Study</h4>
-                  <p className="result-description">
-                    Expert consensus study on neural mobilization approaches
-                  </p>
-                </Card>
-
-                <Card variant="accent" className="result-card highlighted">
-                  <div className="result-label">B. ⭐</div>
-                  <h4>Systematic Review and Meta-Analysis</h4>
-                  <p className="result-description">
-                    Comprehensive analysis of neural mobilization efficacy for
-                    radiculopathy management
-                  </p>
-                </Card>
-
-                <Card variant="default" className="result-card">
-                  <div className="result-label">C.</div>
-                  <h4>Randomized Controlled Trial</h4>
-                  <p className="result-description">
-                    Single RCT comparing neural mobilization to control
-                  </p>
-                </Card>
-              </div>
-
               <div className="answer-prompt">
                 <p>
-                  <strong>Question:</strong> Which study type represents the highest
-                  level of evidence?
+                  <strong>Question 7:</strong> Which article would you choose based on
+                  it being the highest level of evidence?
                 </p>
               </div>
 
-              <div className="continue-actions">
-                <Button
-                  onClick={() => setShowQuestion(true)}
-                  size="lg"
-                  variant="primary"
-                >
-                  Answer Question 7
-                </Button>
+              <div className="citation-list">
+                {treatmentCitations.map((item) => {
+                  const isSelected = answers[7] === item.value
+                  const isCorrect = item.value === 'B. Systematic review and meta-analysis'
+
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className={`citation-card ${isSelected ? 'selected' : ''} ${
+                        answers[7] && isCorrect ? 'correct' : ''
+                      } ${
+                        answers[7] && isSelected && !isCorrect ? 'incorrect' : ''
+                      }`}
+                      onClick={() => handleAnswerQuestion(item.value)}
+                      disabled={answers[7] !== undefined}
+                      aria-pressed={isSelected}
+                    >
+                      <div className="citation-label">{item.id}</div>
+                      <div className="citation-copy">
+                        <h4>{item.studyType}</h4>
+                        <p>{item.citation}</p>
+                      </div>
+                    </button>
+                  )
+                })}
               </div>
+
+              {answers[7] && (
+                <div className="continue-actions">
+                  <Button onClick={handleContinue} size="lg" variant="primary">
+                    Continue to Forest Plot Analysis
+                  </Button>
+                </div>
+              )}
             </div>
           )}
         </Card>

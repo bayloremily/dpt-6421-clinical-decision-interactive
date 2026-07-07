@@ -1,0 +1,162 @@
+.rotation-welcome-content {
+  position: relative;
+  gap: var(--spacing-xl);
+  padding-top: 5rem;
+  padding-bottom: var(--spacing-2xl);
+}
+
+.rotation-welcome-hero {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 22rem;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.rotation-welcome-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+}
+
+.rotation-welcome-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 75, 62, 0.75) 0%, rgba(0, 75, 62, 0.25) 55%, rgba(245, 241, 232, 0) 100%);
+}
+
+.rotation-welcome-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.rotation-welcome-main,
+.rotation-schedule-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+}
+
+.rotation-welcome-kicker,
+.rotation-schedule-kicker {
+  margin-bottom: var(--spacing-sm);
+  color: var(--baylor-gold);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rotation-welcome-main h1 {
+  margin-bottom: var(--spacing-lg);
+  max-width: 12ch;
+}
+
+.rotation-welcome-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.rotation-welcome-section {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(0, 75, 62, 0.04) 0%, rgba(212, 165, 116, 0.08) 100%);
+  border: 1px solid rgba(0, 75, 62, 0.08);
+}
+
+.rotation-welcome-section h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.rotation-welcome-section p:last-child,
+.rotation-welcome-list {
+  margin-bottom: 0;
+}
+
+.rotation-welcome-list {
+  padding-left: 1.25rem;
+}
+
+.rotation-welcome-list li + li {
+  margin-top: 0.5rem;
+}
+
+.rotation-welcome-closing {
+  font-weight: 700;
+  color: var(--baylor-green);
+}
+
+.rotation-welcome-actions {
+  margin-top: var(--spacing-xl);
+}
+
+.rotation-welcome-button {
+  min-width: 14rem;
+}
+
+.rotation-schedule-card {
+  position: sticky;
+  top: 5rem;
+}
+
+.rotation-schedule-card h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.rotation-schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.rotation-schedule-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: rgba(0, 75, 62, 0.05);
+}
+
+.rotation-schedule-list span {
+  color: var(--baylor-green);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.rotation-schedule-list strong {
+  color: var(--dark-gray);
+}
+
+@media (max-width: 900px) {
+  .rotation-welcome-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rotation-schedule-card {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .rotation-welcome-content {
+    padding-top: 4.5rem;
+  }
+
+  .rotation-welcome-hero {
+    height: 16rem;
+  }
+
+  .rotation-welcome-section {
+    padding: var(--spacing-md);
+  }
+}

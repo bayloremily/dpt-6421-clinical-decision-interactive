@@ -15,9 +15,9 @@ export default function PatientChartScene() {
     answers,
     handleAnswer,
     setIsChartComplete,
+    devLocation,
+    updateDevLocation,
   } = useContext(QuizContext)
-
-  const [showQuestion, setShowQuestion] = useState(false)
 
   const tabs = [
     { id: 'history', label: 'Patient History' },
@@ -38,7 +38,7 @@ export default function PatientChartScene() {
       alert('Please review all chart tabs before proceeding.')
       return
     }
-    setShowQuestion(true)
+    updateDevLocation({ patientChartView: 'question' })
   }
 
   const handleAnswerQuestion = (answer) => {
@@ -50,7 +50,7 @@ export default function PatientChartScene() {
     goToScene('literatureSearch')
   }
 
-  if (showQuestion) {
+  if (devLocation.patientChartView === 'question') {
     return (
       <div className="scene-container">
         <div className="scene-content">
@@ -69,10 +69,42 @@ export default function PatientChartScene() {
             selectedAnswer={answers[1]}
           />
           {answers[1] && (
-            <div className="question-actions">
-              <Button onClick={handleContinue} size="lg">
-                Continue to Literature Search
-              </Button>
+            <div className="question-transition-layout">
+              <Card className="question-transition-card">
+                <div className="question-transition-media">
+                  <ImageWithPlaceholder
+                    src="/assets/laptop-note.jpeg"
+                    alt="Laptop and research notes representing a literature search"
+                    className="question-transition-image"
+                  />
+                </div>
+
+                <div className="question-transition-copy">
+                  <p className="question-transition-kicker">Clinical Reflection</p>
+                  <h2>Before You Search the Literature</h2>
+                  <div className="question-transition-body">
+                    <p>
+                      You&apos;ve performed these tests before... but how confident
+                      are you, really, in their accuracy for a patient like this?
+                    </p>
+                    <p>
+                      Will these tests truly help you confirm a diagnosis of
+                      lumbo-sacral radiculopathy?
+                    </p>
+                    <p>
+                      Rather than relying on routine alone, you decide to take a step
+                      back and consult the evidence.
+                    </p>
+                    <p>You perform a quick search of the literature.</p>
+                  </div>
+
+                  <div className="question-actions">
+                    <Button onClick={handleContinue} size="lg">
+                      Search the Literature
+                    </Button>
+                  </div>
+                </div>
+              </Card>
             </div>
           )}
         </div>

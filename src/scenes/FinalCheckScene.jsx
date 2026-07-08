@@ -10,9 +10,12 @@ import hospitalAmbience from '../../assets/sounds/Hospital_Ambience_source_10444
 import keyboardCue from '../../assets/sounds/MA_SoundsByGfxSounds_OfficeKeyboardTyping_preview/MA_SoundsByGfxSounds_OfficeKeyboardTyping_3.wav'
 import keyboardLoop from '../../assets/sounds/MA_SoundsByGfxSounds_OfficeKeyboardTyping_preview/MA_SoundsByGfxSounds_OfficeKeyboardTyping_4.wav'
 import notificationCue from '../../assets/sounds/MA_SoundsByGFXSounds_DingNotification/MA_SoundsByGFXSounds_DingNotification_2.wav'
+import finalNarration5 from '../../assets/VO/Final_Narration_5.mp3'
+import finalNarration6 from '../../assets/VO/Final_Narration_6.mp3'
+import { useAutoAudio } from '../hooks/useAutoAudio'
 
 export default function FinalCheckScene() {
-  const { goToScene, answers, handleAnswer } = useContext(QuizContext)
+  const { goToScene, answers, handleAnswer, soundEnabled } = useContext(QuizContext)
   const [dialogueIndex, setDialogueIndex] = useState(0)
   const [hasStarted, setHasStarted] = useState(false)
   const typingLoopRef = useRef(null)
@@ -70,13 +73,23 @@ export default function FinalCheckScene() {
     },
   })
 
+  useAutoAudio({
+    src: finalNarration5,
+    enabled: hasStarted && dialogueIndex === 0,
+  })
+
+  useAutoAudio({
+    src: finalNarration6,
+    enabled: answers[13] !== undefined,
+  })
+
   useEffect(() => {
     const audio = typingLoopRef.current ?? new Audio(keyboardLoop)
     audio.loop = true
     audio.volume = 0.06
     typingLoopRef.current = audio
 
-    if (hasStarted && dialogueIndex === 0) {
+    if (soundEnabled && hasStarted && dialogueIndex === 0) {
       audio.play().catch(() => {})
     } else {
       audio.pause()
@@ -87,7 +100,7 @@ export default function FinalCheckScene() {
       audio.pause()
       audio.currentTime = 0
     }
-  }, [dialogueIndex, hasStarted])
+  }, [dialogueIndex, hasStarted, soundEnabled])
 
   return (
     <div className="scene-container">

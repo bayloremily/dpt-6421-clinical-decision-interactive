@@ -80,6 +80,10 @@ const tocSections = [
         devLocation: { forestPlotQuestion: 8 },
       },
       {
+        label: 'Pre-Question 9 Dialogue',
+        scene: 'preQuestionNineDialogue',
+      },
+      {
         label: 'Question 9',
         scene: 'forestPlot',
         devLocation: { forestPlotQuestion: 9 },

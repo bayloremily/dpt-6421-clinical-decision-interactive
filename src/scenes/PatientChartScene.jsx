@@ -4,7 +4,10 @@ import Card from '../components/Card'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
+import { useAutoAudio } from '../hooks/useAutoAudio'
 import './PatientChartScene.css'
+import slide1Narration from '../../assets/VO/Slide_1_Narration.mp3'
+import slide2Narration from '../../assets/VO/Slide_2_Narration.mp3'
 
 export default function PatientChartScene() {
   const {
@@ -28,9 +31,23 @@ export default function PatientChartScene() {
 
   const [activeTab, setActiveTab] = useState('history')
 
+  useAutoAudio({
+    src: slide1Narration,
+    enabled: devLocation.patientChartView === 'chart',
+  })
+
+  useAutoAudio({
+    src: slide2Narration,
+    enabled: devLocation.patientChartView === 'question' && answers[1] !== undefined,
+  })
+
   const handleTabChange = (tabId) => {
     setActiveTab(tabId)
     handleTabClick(tabId)
+  }
+
+  const handleReviewCurrentTab = () => {
+    handleTabClick(activeTab)
   }
 
   const handleProceedToQuestion = () => {
@@ -119,6 +136,14 @@ export default function PatientChartScene() {
         <p className="subtitle">EMR Interface - Review all tabs before proceeding</p>
 
         <Card className="emr-card">
+          {!completedChartTabs.has(activeTab) && (
+            <div className="emr-overlay">
+              <Button onClick={handleReviewCurrentTab} size="lg">
+                Review Patient File
+              </Button>
+            </div>
+          )}
+
           <div className="chart-tabs">
             {tabs.map((tab) => (
               <button

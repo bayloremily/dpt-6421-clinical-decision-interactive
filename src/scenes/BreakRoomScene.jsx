@@ -10,9 +10,12 @@ import footstepsCue from '../../assets/sounds/Footsteps_on_Concrete_source_60681
 import doorCue from '../../assets/sounds/Open_Door_source_890033/Open Door 3.wav'
 import keyboardCue from '../../assets/sounds/MA_SoundsByGfxSounds_OfficeKeyboardTyping_preview/MA_SoundsByGfxSounds_OfficeKeyboardTyping_2.wav'
 import keyboardLoop from '../../assets/sounds/MA_SoundsByGfxSounds_OfficeKeyboardTyping_preview/MA_SoundsByGfxSounds_OfficeKeyboardTyping_4.wav'
+import lunchroomNarrator1 from '../../assets/VO/Lunchroom_Narrator_1.mp3'
+import lunchroomNarrator2 from '../../assets/VO/Lunchroom_Narrator_2.mp3'
+import { useAutoAudio } from '../hooks/useAutoAudio'
 
 export default function BreakRoomScene() {
-  const { goToDevLocation } = useContext(QuizContext)
+  const { goToDevLocation, soundEnabled } = useContext(QuizContext)
   const [dialogueIndex, setDialogueIndex] = useState(0)
   const [hasStarted, setHasStarted] = useState(false)
   const typingLoopRef = useRef(null)
@@ -80,13 +83,23 @@ export default function BreakRoomScene() {
     },
   })
 
+  useAutoAudio({
+    src: lunchroomNarrator1,
+    enabled: !hasStarted,
+  })
+
+  useAutoAudio({
+    src: lunchroomNarrator2,
+    enabled: hasStarted && dialogueIndex === 8,
+  })
+
   useEffect(() => {
     const audio = typingLoopRef.current ?? new Audio(keyboardLoop)
     audio.loop = true
     audio.volume = 0.06
     typingLoopRef.current = audio
 
-    if (hasStarted && dialogueIndex === 8) {
+    if (soundEnabled && hasStarted && dialogueIndex === 8) {
       audio.play().catch(() => {})
     } else {
       audio.pause()
@@ -97,7 +110,7 @@ export default function BreakRoomScene() {
       audio.pause()
       audio.currentTime = 0
     }
-  }, [dialogueIndex, hasStarted])
+  }, [dialogueIndex, hasStarted, soundEnabled])
 
   return (
     <div className="scene-container">

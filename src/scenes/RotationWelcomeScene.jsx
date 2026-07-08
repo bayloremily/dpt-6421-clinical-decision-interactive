@@ -3,10 +3,16 @@ import { QuizContext } from '../context/QuizContext'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
+import { useAutoAudio } from '../hooks/useAutoAudio'
 import './RotationWelcomeScene.css'
+import slide0Narration from '../../assets/VO/Slide_0_Narration.mp3'
 
 export default function RotationWelcomeScene() {
   const { goToDevLocation } = useContext(QuizContext)
+
+  useAutoAudio({
+    src: slide0Narration,
+  })
 
   return (
     <div className="scene-container">

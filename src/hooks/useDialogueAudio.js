@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useContext, useEffect, useMemo, useRef } from 'react'
+import { QuizContext } from '../context/QuizContext'
 
 export function useDialogueAudio({
   hasStarted,
@@ -7,6 +8,7 @@ export function useDialogueAudio({
   ambienceVolume = 0.08,
   cueMap = {},
 }) {
+  const { soundEnabled } = useContext(QuizContext)
   const ambienceRef = useRef(null)
   const cueRefs = useRef({})
 
@@ -52,7 +54,7 @@ export function useDialogueAudio({
 
     if (!ambience) return undefined
 
-    if (hasStarted) {
+    if (hasStarted && soundEnabled) {
       ambience.play().catch(() => {})
     } else {
       ambience.pause()
@@ -60,10 +62,10 @@ export function useDialogueAudio({
     }
 
     return undefined
-  }, [hasStarted])
+  }, [hasStarted, soundEnabled])
 
   useEffect(() => {
-    if (!hasStarted) return undefined
+    if (!hasStarted || !soundEnabled) return undefined
 
     const audio = cueRefs.current[String(dialogueIndex)]
     if (!audio) return undefined
@@ -72,5 +74,5 @@ export function useDialogueAudio({
     audio.play().catch(() => {})
 
     return undefined
-  }, [dialogueIndex, hasStarted])
+  }, [dialogueIndex, hasStarted, soundEnabled])
 }

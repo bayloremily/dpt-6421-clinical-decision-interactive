@@ -9,6 +9,7 @@ import DiagnosticSummaryScene from './scenes/DiagnosticSummaryScene'
 import BreakRoomScene from './scenes/BreakRoomScene'
 import TreatmentLiteratureScene from './scenes/TreatmentLiteratureScene'
 import ForestPlotScene from './scenes/ForestPlotScene'
+import PreQuestionNineDialogueScene from './scenes/PreQuestionNineDialogueScene'
 import EfficacyArticleScene from './scenes/EfficacyArticleScene'
 import StudyDialogueScene from './scenes/StudyDialogueScene'
 import ResultsInterpretationScene from './scenes/ResultsInterpretationScene'
@@ -17,6 +18,7 @@ import FinalCheckScene from './scenes/FinalCheckScene'
 import FinalScene from './scenes/FinalScene'
 import Modal from './components/Modal'
 import DevToc from './components/DevToc'
+import SoundToggle from './components/SoundToggle'
 import './App.css'
 
 function AppContent() {
@@ -43,6 +45,8 @@ function AppContent() {
         return <TreatmentLiteratureScene />
       case 'forestPlot':
         return <ForestPlotScene />
+      case 'preQuestionNineDialogue':
+        return <PreQuestionNineDialogueScene />
       case 'efficacyArticle':
         return <EfficacyArticleScene />
       case 'studyDialogue':
@@ -63,6 +67,7 @@ function AppContent() {
   return (
     <div className={`app-container ${isTocOpen ? 'toc-open' : 'toc-closed'}`}>
       <DevToc isOpen={isTocOpen} onToggle={() => setIsTocOpen((prev) => !prev)} />
+      <SoundToggle />
       {renderScene()}
       {showModal && <Modal content={modalContent} onClose={closeModal} />}
     </div>

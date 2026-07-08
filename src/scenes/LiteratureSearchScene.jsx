@@ -53,18 +53,6 @@ export default function LiteratureSearchScene() {
         <h1>Literature Search</h1>
         <p className="subtitle">Search the clinical database for relevant literature</p>
 
-        <Card className="search-context-card">
-          <p>
-            Will these tests truly help you confirm a diagnosis of lumbo-sacral
-            radiculopathy?
-          </p>
-          <p>
-            Rather than relying on routine alone, you decide to take a step back and
-            consult the evidence.
-          </p>
-          <p>Perform a quick search of the literature.</p>
-        </Card>
-
         <Card variant="outlined" className="search-card">
           <form onSubmit={handleSearch} className="search-form">
             <label htmlFor="search-input" className="search-label">

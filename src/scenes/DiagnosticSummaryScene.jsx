@@ -3,10 +3,16 @@ import { QuizContext } from '../context/QuizContext'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
+import { useAutoAudio } from '../hooks/useAutoAudio'
 import './DiagnosticSummaryScene.css'
+import preLunchroomNarration from '../../assets/VO/Pre_Lunchroom_3_Narration.mp3'
 
 export default function DiagnosticSummaryScene() {
   const { goToScene } = useContext(QuizContext)
+
+  useAutoAudio({
+    src: preLunchroomNarration,
+  })
 
   return (
     <div className="scene-container">

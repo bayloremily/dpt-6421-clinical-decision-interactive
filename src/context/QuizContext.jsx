@@ -18,6 +18,7 @@ export const QuizProvider = ({ children }) => {
   const [isTreatmentLiteratureComplete, setIsTreatmentLiteratureComplete] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [modalContent, setModalContent] = useState(null)
+  const [soundEnabled, setSoundEnabled] = useState(true)
 
   const handleAnswer = useCallback((questionNumber, answer) => {
     setAnswers((prev) => ({
@@ -109,6 +110,8 @@ export const QuizProvider = ({ children }) => {
         setIsFirstLiteratureComplete,
         isTreatmentLiteratureComplete,
         setIsTreatmentLiteratureComplete,
+        soundEnabled,
+        setSoundEnabled,
         showModal,
         setShowModal,
         modalContent,

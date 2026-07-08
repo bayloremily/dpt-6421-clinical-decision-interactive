@@ -46,7 +46,7 @@ export default function ForestPlotScene() {
 
   const handleNextQuestion = () => {
     if (currentQuestion === 8) {
-      updateDevLocation({ forestPlotQuestion: 9 })
+      goToScene('preQuestionNineDialogue')
     } else {
       goToScene('efficacyArticle')
     }
@@ -131,7 +131,7 @@ export default function ForestPlotScene() {
               </div>
             )}
             <Button onClick={handleNextQuestion} size="lg">
-              {currentQuestion === 9 ? 'Continue to Efficacy Article' : 'Next Question'}
+              {currentQuestion === 9 ? 'Continue to Efficacy Article' : 'Continue'}
             </Button>
           </div>
         )}

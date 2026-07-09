@@ -12,6 +12,10 @@ import keyboardCue from '../../assets/sounds/MA_SoundsByGfxSounds_OfficeKeyboard
 import keyboardLoop from '../../assets/sounds/MA_SoundsByGfxSounds_OfficeKeyboardTyping_preview/MA_SoundsByGfxSounds_OfficeKeyboardTyping_4.wav'
 import lunchroomNarrator1 from '../../assets/VO/Lunchroom_Narrator_1.mp3'
 import lunchroomNarrator2 from '../../assets/VO/Lunchroom_Narrator_2.mp3'
+import breakroomCi1 from '../../assets/VO/Breakroom_CI_1.mp3'
+import breakroomCi2 from '../../assets/VO/Breakroom_CI_2.mp3'
+import breakroomCi3 from '../../assets/VO/Breakroom_CI_3.mp3'
+import breakroomCi4 from '../../assets/VO/Breakroom_CI_4.mp3'
 import { useAutoAudio } from '../hooks/useAutoAudio'
 
 export default function BreakRoomScene() {
@@ -91,6 +95,26 @@ export default function BreakRoomScene() {
   useAutoAudio({
     src: lunchroomNarrator2,
     enabled: hasStarted && dialogueIndex === 8,
+  })
+
+  useAutoAudio({
+    src: breakroomCi1,
+    enabled: hasStarted && dialogueIndex === 1,
+  })
+
+  useAutoAudio({
+    src: breakroomCi2,
+    enabled: hasStarted && dialogueIndex === 3,
+  })
+
+  useAutoAudio({
+    src: breakroomCi3,
+    enabled: hasStarted && dialogueIndex === 5,
+  })
+
+  useAutoAudio({
+    src: breakroomCi4,
+    enabled: hasStarted && dialogueIndex === 7,
   })
 
   useEffect(() => {

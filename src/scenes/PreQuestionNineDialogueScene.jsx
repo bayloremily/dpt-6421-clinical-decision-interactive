@@ -6,6 +6,8 @@ import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import { useAutoAudio } from '../hooks/useAutoAudio'
 import './PreQuestionNineDialogueScene.css'
 import preQuestionNineAudio from '../../assets/VO/Pre-Question_9_Narration_4.mp3'
+import dialogue2Ci1 from '../../assets/VO/Dialogue_2_CI_1.mp3'
+import dialogue2Ci2 from '../../assets/VO/Dialogue_2_CI_2.mp3'
 
 export default function PreQuestionNineDialogueScene() {
   const { goToDevLocation } = useContext(QuizContext)
@@ -30,6 +32,16 @@ export default function PreQuestionNineDialogueScene() {
   useAutoAudio({
     src: preQuestionNineAudio,
     enabled: !hasStarted,
+  })
+
+  useAutoAudio({
+    src: dialogue2Ci1,
+    enabled: hasStarted && dialogueIndex === 0,
+  })
+
+  useAutoAudio({
+    src: dialogue2Ci2,
+    enabled: hasStarted && dialogueIndex === 2,
   })
 
   const currentDialogue = dialogue[dialogueIndex]

@@ -8,6 +8,9 @@ import './StudyDialogueScene.css'
 import hospitalAmbience from '../../assets/sounds/Hospital_Ambience_source_1044408/MA_Dauzkobza_HospitalAmbience_4_DentalClinic.wav'
 import pageTurnCue from '../../assets/sounds/Page_Turning_Pack_source_197039/Page Turning_SFX (12).wav'
 import keyboardCue from '../../assets/sounds/MA_SoundsByGfxSounds_OfficeKeyboardTyping_preview/MA_SoundsByGfxSounds_OfficeKeyboardTyping_1.wav'
+import dialogue3Ci1 from '../../assets/VO/Dialogue_3_CI_1.mp3'
+import dialogue3Ci2 from '../../assets/VO/Dialogue_3_CI_2.mp3'
+import { useAutoAudio } from '../hooks/useAutoAudio'
 
 export default function StudyDialogueScene() {
   const { goToScene } = useContext(QuizContext)
@@ -16,7 +19,7 @@ export default function StudyDialogueScene() {
 
   const dialogue = [
     {
-      speaker: 'Student',
+      speaker: 'You',
       text: 'Hey, can I ask you something about this study I’m looking at?',
     },
     {
@@ -51,6 +54,16 @@ export default function StudyDialogueScene() {
       0: pageTurnCue,
       2: keyboardCue,
     },
+  })
+
+  useAutoAudio({
+    src: dialogue3Ci1,
+    enabled: hasStarted && dialogueIndex === 1,
+  })
+
+  useAutoAudio({
+    src: dialogue3Ci2,
+    enabled: hasStarted && dialogueIndex === 3,
   })
 
   return (

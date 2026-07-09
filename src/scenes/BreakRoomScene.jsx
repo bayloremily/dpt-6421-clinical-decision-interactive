@@ -82,9 +82,14 @@ export default function BreakRoomScene() {
     ambienceSrc: hospitalAmbience,
     cueMap: {
       0: footstepsCue,
-      1: doorCue,
       8: keyboardCue,
     },
+  })
+
+  useAutoAudio({
+    src: doorCue,
+    enabled: hasStarted && dialogueIndex === 0,
+    volume: 0.16,
   })
 
   useAutoAudio({

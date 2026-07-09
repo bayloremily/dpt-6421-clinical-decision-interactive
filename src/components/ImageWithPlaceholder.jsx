@@ -7,6 +7,7 @@ export default function ImageWithPlaceholder({
   className = '',
   onClick,
   isClickable = false,
+  ...props
 }) {
   const [hasError, setHasError] = useState(false)
   const filename = src?.split('/').pop() || 'Image'
@@ -33,6 +34,7 @@ export default function ImageWithPlaceholder({
       onError={() => setHasError(true)}
       onClick={onClick}
       style={{ cursor: isClickable ? 'pointer' : 'default' }}
+      {...props}
     />
   )
 }

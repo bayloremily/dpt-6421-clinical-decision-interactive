@@ -17,6 +17,8 @@ export default function TreatmentLiteratureScene() {
   const [searchInput, setSearchInput] = useState('')
   const [searchAttempt, setSearchAttempt] = useState(false)
   const [showResults, setShowResults] = useState(false)
+  const [questionFeedback, setQuestionFeedback] = useState('')
+  const [questionFeedbackType, setQuestionFeedbackType] = useState('')
   const validKeywords = [
     'neural mobilization lumbar radiculopathy',
     'neural mobilisation lumbar radiculopathy',
@@ -69,8 +71,17 @@ export default function TreatmentLiteratureScene() {
   const shouldShowResults = showResults || questionView
 
   const handleAnswerQuestion = (answer) => {
-    handleAnswer(7, answer)
     updateDevLocation({ treatmentView: 'question' })
+
+    if (answer === 'B. Systematic review and meta-analysis') {
+      handleAnswer(7, answer)
+      setQuestionFeedback('Correct! Well done.')
+      setQuestionFeedbackType('success')
+      return
+    }
+
+    setQuestionFeedback('Incorrect. Try again.')
+    setQuestionFeedbackType('error')
   }
 
   return (
@@ -146,7 +157,7 @@ export default function TreatmentLiteratureScene() {
                         answers[7] && isSelected && !isCorrect ? 'incorrect' : ''
                       }`}
                       onClick={() => handleAnswerQuestion(item.value)}
-                      disabled={answers[7] !== undefined}
+                      disabled={answers[7] !== undefined && isCorrect}
                       aria-pressed={isSelected}
                     >
                       <div className="citation-label">{item.id}</div>
@@ -158,6 +169,16 @@ export default function TreatmentLiteratureScene() {
                   )
                 })}
               </div>
+
+              {questionFeedback && (
+                <div
+                  className={`treatment-feedback ${questionFeedbackType}`}
+                  role="status"
+                  aria-live="polite"
+                >
+                  {questionFeedback}
+                </div>
+              )}
 
               {answers[7] && (
                 <div className="continue-actions">

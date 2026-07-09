@@ -4,8 +4,9 @@ import Card from '../components/Card'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
-import Modal from '../components/Modal'
+import AccessibleFigure from '../components/AccessibleFigure'
 import { useAutoAudio } from '../hooks/useAutoAudio'
+import { bodyChartDescription } from '../content/accessibleDescriptions'
 import './PatientChartScene.css'
 import slide1Narration from '../../assets/VO/Slide_1_Narration.mp3'
 import slide2Narration from '../../assets/VO/Slide_2_Narration.mp3'
@@ -31,7 +32,6 @@ export default function PatientChartScene() {
   ]
 
   const [activeTab, setActiveTab] = useState('history')
-  const [isBodyChartZoomed, setIsBodyChartZoomed] = useState(false)
 
   useAutoAudio({
     src: slide1Narration,
@@ -228,23 +228,16 @@ export default function PatientChartScene() {
             {activeTab === 'bodychart' && (
               <div className="tab-pane">
                 <h3>Body Chart</h3>
-                <div className="body-chart-wrapper">
-                  <button
-                    type="button"
-                    className="body-chart-button"
-                    onClick={() => setIsBodyChartZoomed(true)}
-                    aria-label="Open enlarged body chart"
-                  >
-                    <ImageWithPlaceholder
-                      src="/assets/BodyChart.png"
-                      alt="Anatomical body chart showing pain distribution pattern"
-                      className="body-chart-image"
-                    />
-                  </button>
-                  <Button onClick={() => setIsBodyChartZoomed(true)}>
-                    Zoom In on Body Chart
-                  </Button>
-                </div>
+                <AccessibleFigure
+                  src="/assets/BodyChart.png"
+                  alt="Hand-drawn body chart with front, back, and side views, showing blue markings and handwritten pain notes"
+                  title="Body Chart"
+                  longDescription={bodyChartDescription}
+                  imageClassName="body-chart-image"
+                  modalImageClassName="body-chart-modal-image"
+                  zoomLabel="Zoom In on Body Chart"
+                  summaryLabel="Read body chart long description"
+                />
               </div>
             )}
           </div>
@@ -264,22 +257,6 @@ export default function PatientChartScene() {
             Proceed to Assessment Question
           </Button>
         </div>
-
-        {isBodyChartZoomed && (
-          <Modal
-            onClose={() => setIsBodyChartZoomed(false)}
-            content={
-              <div className="body-chart-modal">
-                <h3>Body Chart</h3>
-                <ImageWithPlaceholder
-                  src="/assets/BodyChart.png"
-                  alt="Enlarged anatomical body chart showing pain distribution pattern"
-                  className="body-chart-modal-image"
-                />
-              </div>
-            }
-          />
-        )}
       </div>
     </div>
   )

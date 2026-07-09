@@ -1,0 +1,58 @@
+.accessible-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.accessible-figure-image-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.accessible-figure-image-button:focus-visible {
+  outline: 3px solid var(--baylor-gold);
+  outline-offset: 6px;
+  border-radius: var(--radius-md);
+}
+
+.accessible-figure-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.accessible-figure-description h4,
+.accessible-figure-modal h3 {
+  margin-bottom: var(--spacing-md);
+  color: var(--baylor-green);
+}
+
+.accessible-figure-description p,
+.accessible-figure-modal-description p {
+  margin-bottom: var(--spacing-md);
+}
+
+.accessible-figure-description ul,
+.accessible-figure-modal-description ul {
+  margin: 0 0 var(--spacing-md) 1.25rem;
+}
+
+.accessible-figure-description li,
+.accessible-figure-modal-description li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.accessible-figure-modal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.accessible-figure-modal-description {
+  line-height: 1.7;
+}

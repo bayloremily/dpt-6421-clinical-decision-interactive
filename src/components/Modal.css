@@ -86,6 +86,34 @@
   border-radius: var(--radius-lg);
 }
 
+.accessible-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.accessible-modal-content h3 {
+  margin: 0;
+  color: var(--baylor-green);
+}
+
+.accessible-modal-description {
+  line-height: 1.7;
+}
+
+.accessible-modal-description p {
+  margin-bottom: var(--spacing-md);
+}
+
+.accessible-modal-description h4 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--baylor-green);
+}
+
+.accessible-modal-description ul {
+  margin: 0 0 var(--spacing-md) 1.25rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .modal-content {

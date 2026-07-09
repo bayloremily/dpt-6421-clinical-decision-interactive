@@ -31,11 +31,15 @@ The application is built as a lightweight React + Vite single-page interactive w
 
 - Scene-by-scene guided case progression
 - Quiz-style knowledge checks with immediate feedback
+- Retry behavior on incorrect quiz answers where applicable
 - Development TOC for jumping between scenes during build-out
 - Literature search and appraisal activities
 - Dialogue scenes with full-screen clinical backdrops
-- Low-volume ambient and cue sound effects for dialogue moments
+- Voiceover, CI dialogue, ambient, and cue sound effects across major scenes
+- Global sound on/off control for accessibility
 - Modal-based viewing of clinical figures and article images
+- Zoomable body chart and research figures
+- Screen-reader-friendly long descriptions for complex charts and tables
 - Final summary screen with case completion score
 - Restart flow for repeated use in teaching or self-study
 
@@ -49,13 +53,27 @@ The current build includes:
 - Diagnostic summary slide
 - Lunch/break room dialogue sequence
 - Treatment literature search and Question 7
+- Pre-Question 9 dialogue scene
 - Meta-analysis interpretation through Questions 8-9
 - Article appraisal and Question 10
-- Dialogue follow-up scene
+- Study dialogue follow-up scene
 - Results interpretation and Question 11
 - Functional disability interpretation and Question 12
 - Final lunchroom check-in with Question 13
 - Final wrap-up and score summary
+
+## Accessibility and Media Notes
+
+The current build includes several accessibility-focused enhancements:
+
+- Keyboard-accessible development TOC and scene controls
+- Sound toggle to pause or resume audio playback
+- Audio handoff logic so advancing quickly stops the prior clip cleanly
+- Low-volume environmental SFX mixed underneath narration and CI dialogue
+- Text alternatives for complex charts, tables, and figures
+- Modal access to enlarged chart and article views
+
+These updates improve accessibility significantly, but they do not replace a full WCAG audit across every interaction pattern and assistive technology workflow.
 
 ## Project Structure
 
@@ -104,6 +122,7 @@ npm run preview
 ## Notes
 
 - macOS metadata files are excluded from version control through `.gitignore`.
+- Existing macOS resource-fork files such as `._*` and `.DS_Store` should be cleaned before commits if they appear locally.
 - Build output is generated into `dist/` and should not be committed.
 - Dialogue scene sound effects are intentionally mixed at low volume for development.
 

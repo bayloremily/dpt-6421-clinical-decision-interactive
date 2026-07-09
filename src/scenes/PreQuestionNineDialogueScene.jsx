@@ -3,8 +3,10 @@ import { QuizContext } from '../context/QuizContext'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
+import { useDialogueAudio } from '../hooks/useDialogueAudio'
 import { useAutoAudio } from '../hooks/useAutoAudio'
 import './PreQuestionNineDialogueScene.css'
+import hospitalAmbience from '../../assets/sounds/Hospital_Ambience_source_1044408/MA_Dauzkobza_HospitalAmbience_4_DentalClinic.wav'
 import preQuestionNineAudio from '../../assets/VO/Pre-Question_9_Narration_4.mp3'
 import dialogue2Ci1 from '../../assets/VO/Dialogue_2_CI_1.mp3'
 import dialogue2Ci2 from '../../assets/VO/Dialogue_2_CI_2.mp3'
@@ -28,6 +30,13 @@ export default function PreQuestionNineDialogueScene() {
       text: 'Literature reviews are so helpful because they can point you to other studies. To get more information about the details of the treatment, I would look more in depth into one of the studies that statistically favored neural mobilization.',
     },
   ]
+
+  useDialogueAudio({
+    hasStarted,
+    dialogueIndex,
+    ambienceSrc: hospitalAmbience,
+    ambienceVolume: 0.06,
+  })
 
   useAutoAudio({
     src: preQuestionNineAudio,

@@ -3,23 +3,15 @@ import { QuizContext } from '../context/QuizContext'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
-import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
+import AccessibleFigure from '../components/AccessibleFigure'
+import { mixedModelTablesDescription } from '../content/accessibleDescriptions'
 import './FunctionalDisabilityScene.css'
 
 export default function FunctionalDisabilityScene() {
-  const { goToScene, answers, handleAnswer, showImageModal } = useContext(QuizContext)
+  const { goToScene, answers, handleAnswer } = useContext(QuizContext)
 
   const handleAnswerQuestion = (answer) => {
     handleAnswer(12, answer)
-  }
-
-  const handleViewArticle = () => {
-    showImageModal(
-      <ImageWithPlaceholder
-        src="/assets/question-11-correct-graph.png"
-        alt="Graph showing the relevant ODI and interaction results for Question 12"
-      />
-    )
   }
 
   return (
@@ -57,16 +49,15 @@ export default function FunctionalDisabilityScene() {
           </div>
 
           <div className="odi-article-section">
-            <ImageWithPlaceholder
+            <AccessibleFigure
               src="/assets/question-11-correct-graph.png"
-              alt="Graph preview related to ODI and treatment outcomes"
-              className="odi-image"
-              onClick={handleViewArticle}
-              isClickable
+              alt="Study results image showing ODI values and mixed-model ANOVA findings"
+              title="ODI Results and Mixed-Model Tables"
+              longDescription={mixedModelTablesDescription}
+              imageClassName="odi-image"
+              zoomLabel="View Study Article"
+              summaryLabel="Read ODI long description"
             />
-            <Button onClick={handleViewArticle} variant="secondary">
-              View Study Article
-            </Button>
           </div>
         </Card>
 

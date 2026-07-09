@@ -87,6 +87,25 @@
   margin-top: var(--spacing-xl);
 }
 
+.treatment-feedback {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+.treatment-feedback.success {
+  background-color: rgba(39, 174, 96, 0.1);
+  border-left: 4px solid var(--success);
+  color: var(--success);
+}
+
+.treatment-feedback.error {
+  background-color: rgba(231, 76, 60, 0.1);
+  border-left: 4px solid var(--error);
+  color: var(--error);
+}
+
 .question-actions {
   display: flex;
   justify-content: center;

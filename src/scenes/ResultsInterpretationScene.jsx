@@ -3,26 +3,15 @@ import { QuizContext } from '../context/QuizContext'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
-import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
+import AccessibleFigure from '../components/AccessibleFigure'
+import { mixedModelTablesDescription } from '../content/accessibleDescriptions'
 import './ResultsInterpretationScene.css'
 
 export default function ResultsInterpretationScene() {
-  const { goToScene, answers, handleAnswer, showImageModal } = useContext(QuizContext)
+  const { goToScene, answers, handleAnswer } = useContext(QuizContext)
 
   const handleAnswerQuestion = (answer) => {
     handleAnswer(11, answer)
-  }
-
-  const handleViewGraph = () => {
-    showImageModal(
-      <div>
-        <h3>Clinical Interpretation Graph</h3>
-        <ImageWithPlaceholder
-          src="/assets/question-11-correct-graph.png"
-          alt="Graph showing the correct interpretation for question 11"
-        />
-      </div>
-    )
   }
 
   const handleContinue = () => {
@@ -62,16 +51,15 @@ export default function ResultsInterpretationScene() {
           </div>
 
           <div className="graph-preview">
-            <ImageWithPlaceholder
+            <AccessibleFigure
               src="/assets/question-11-correct-graph.png"
-              alt="Preview of the clinical interpretation graph"
-              className="graph-image"
-              onClick={handleViewGraph}
-              isClickable
+              alt="Study results image showing descriptive outcome values and mixed-model ANOVA findings"
+              title="Clinical Interpretation Graph"
+              longDescription={mixedModelTablesDescription}
+              imageClassName="graph-image"
+              zoomLabel="View Full Graph"
+              summaryLabel="Read graph long description"
             />
-            <Button onClick={handleViewGraph} variant="secondary">
-              View Full Graph
-            </Button>
           </div>
         </Card>
 

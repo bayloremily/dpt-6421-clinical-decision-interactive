@@ -3,6 +3,7 @@ import { QuizContext } from '../context/QuizContext'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
+import { sensoryTableDescription } from '../content/accessibleDescriptions'
 import './ResearchAppraisalScene.css'
 
 export default function ResearchAppraisalScene() {
@@ -76,13 +77,36 @@ export default function ResearchAppraisalScene() {
     if (answer === currentQ.correct && currentQ.showImageOn === 'correct') {
       setTimeout(() => {
         showImageModal(
-          <ImageWithPlaceholder
-            src={currentQ.image}
-            alt={currentQ.imageAlt}
-          />
+          <div className="accessible-modal-content">
+            <h3>Diagnostic Sensory Testing Table</h3>
+            <ImageWithPlaceholder
+              src={currentQ.image}
+              alt={currentQ.imageAlt}
+            />
+            <div className="accessible-modal-description">
+              {sensoryTableDescription}
+            </div>
+          </div>
         )
       }, 500)
     }
+  }
+
+  const handleOpenCurrentReference = () => {
+    if (currentQ.number !== 5) return
+
+    showImageModal(
+      <div className="accessible-modal-content">
+        <h3>Diagnostic Sensory Testing Table</h3>
+        <ImageWithPlaceholder
+          src={currentQ.image}
+          alt={currentQ.imageAlt}
+        />
+        <div className="accessible-modal-description">
+          {sensoryTableDescription}
+        </div>
+      </div>
+    )
   }
 
   const handleNextQuestion = () => {
@@ -134,6 +158,11 @@ export default function ResearchAppraisalScene() {
               <div className="success-message" role="status" aria-live="polite">
                 <p>Great! You've understood this concept.</p>
               </div>
+            ) : null}
+            {isCurrentCorrect && currentQ.number === 5 ? (
+              <Button onClick={handleOpenCurrentReference} variant="secondary">
+                Review Table 3 with Long Description
+              </Button>
             ) : null}
             <Button onClick={handleNextQuestion} size="lg">
               {currentQuestion === 6 ? 'Continue' : 'Next Question'}

@@ -3,7 +3,8 @@ import { QuizContext } from '../context/QuizContext'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
-import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
+import AccessibleFigure from '../components/AccessibleFigure'
+import { forestPlotDescription } from '../content/accessibleDescriptions'
 import './ForestPlotScene.css'
 
 export default function ForestPlotScene() {
@@ -11,7 +12,6 @@ export default function ForestPlotScene() {
     goToScene,
     answers,
     handleAnswer,
-    showImageModal,
     devLocation,
     updateDevLocation,
   } = useContext(QuizContext)
@@ -55,24 +55,6 @@ export default function ForestPlotScene() {
   const isCurrentAnswered = answers[currentQuestion] !== undefined
   const isCurrentCorrect = answers[currentQuestion] === currentQ.correct
 
-  const handleViewStudyOverview = () => {
-    showImageModal(
-      <ImageWithPlaceholder
-        src="/assets/neural-article.png"
-        alt="Neural article study showing meta-analysis overview"
-      />
-    )
-  }
-
-  const handleViewForestPlot = () => {
-    showImageModal(
-      <ImageWithPlaceholder
-        src="/assets/figure-2.png"
-        alt="Forest plot showing individual study results and pooled effect size"
-      />
-    )
-  }
-
   return (
     <div className="scene-container">
       <div className="scene-content">
@@ -89,23 +71,32 @@ export default function ForestPlotScene() {
           <div className="image-grid">
             <div className="image-item">
               <p className="image-label">Study Overview</p>
-              <ImageWithPlaceholder
+              <AccessibleFigure
                 src="/assets/neural-article.png"
-                alt="Neural article research overview"
-                className="article-thumbnail"
-                onClick={handleViewStudyOverview}
-                isClickable
+                alt="Systematic review article overview for neural mobilization in lumbar radiculopathy"
+                title="Study Overview"
+                longDescription={
+                  <p>
+                    Article preview image for the systematic review and meta-analysis on
+                    neural mobilization in patients with lumbar radiculopathy.
+                  </p>
+                }
+                imageClassName="article-thumbnail"
+                zoomLabel="Zoom Study Overview"
+                summaryLabel="Read study overview image description"
               />
             </div>
 
             <div className="image-item">
               <p className="image-label">Forest Plot Results</p>
-              <ImageWithPlaceholder
+              <AccessibleFigure
                 src="/assets/figure-2.png"
-                alt="Forest plot showing effect sizes"
-                className="article-thumbnail"
-                onClick={handleViewForestPlot}
-                isClickable
+                alt="Forest plot showing individual study results and pooled effect size"
+                title="Forest Plot Results"
+                longDescription={forestPlotDescription}
+                imageClassName="article-thumbnail"
+                zoomLabel="Zoom Forest Plot"
+                summaryLabel="Read forest plot long description"
               />
             </div>
           </div>

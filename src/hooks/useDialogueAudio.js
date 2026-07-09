@@ -65,6 +65,11 @@ export function useDialogueAudio({
   }, [hasStarted, soundEnabled])
 
   useEffect(() => {
+    Object.values(cueRefs.current).forEach((audio) => {
+      audio.pause()
+      audio.currentTime = 0
+    })
+
     if (!hasStarted || !soundEnabled) return undefined
 
     const audio = cueRefs.current[String(dialogueIndex)]
@@ -73,6 +78,9 @@ export function useDialogueAudio({
     audio.currentTime = 0
     audio.play().catch(() => {})
 
-    return undefined
+    return () => {
+      audio.pause()
+      audio.currentTime = 0
+    }
   }, [dialogueIndex, hasStarted, soundEnabled])
 }

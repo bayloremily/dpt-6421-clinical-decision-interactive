@@ -12,13 +12,18 @@ import keyboardLoop from '../../assets/sounds/MA_SoundsByGfxSounds_OfficeKeyboar
 import notificationCue from '../../assets/sounds/MA_SoundsByGFXSounds_DingNotification/MA_SoundsByGFXSounds_DingNotification_2.wav'
 import finalNarration5 from '../../assets/VO/Final_Narration_5.mp3'
 import finalNarration6 from '../../assets/VO/Final_Narration_6.mp3'
+import q13Ci1 from '../../assets/VO/Q_13_CI_1.mp3'
+import q13Ci2 from '../../assets/VO/Q_13_CI_2.mp3'
+import q13CiAnswerFeedback from '../../assets/VO/Q_13_CI_Answer_Feedback.mp3'
 import { useAutoAudio } from '../hooks/useAutoAudio'
 
 export default function FinalCheckScene() {
   const { goToScene, answers, handleAnswer, soundEnabled } = useContext(QuizContext)
   const [dialogueIndex, setDialogueIndex] = useState(0)
   const [hasStarted, setHasStarted] = useState(false)
+  const [canPlayFinalNarration, setCanPlayFinalNarration] = useState(false)
   const typingLoopRef = useRef(null)
+  const hadAnsweredRef = useRef(false)
 
   const dialogue = [
     {
@@ -80,7 +85,17 @@ export default function FinalCheckScene() {
 
   useAutoAudio({
     src: finalNarration6,
-    enabled: answers[13] !== undefined,
+    enabled: canPlayFinalNarration,
+  })
+
+  useAutoAudio({
+    src: q13Ci1,
+    enabled: hasStarted && dialogueIndex === 3,
+  })
+
+  useAutoAudio({
+    src: q13Ci2,
+    enabled: hasStarted && dialogueIndex === 5,
   })
 
   useEffect(() => {
@@ -101,6 +116,31 @@ export default function FinalCheckScene() {
       audio.currentTime = 0
     }
   }, [dialogueIndex, hasStarted, soundEnabled])
+
+  useEffect(() => {
+    if (!answers[13]) {
+      hadAnsweredRef.current = false
+      setCanPlayFinalNarration(false)
+      return undefined
+    }
+
+    if (hadAnsweredRef.current || !soundEnabled) return undefined
+
+    hadAnsweredRef.current = true
+    setCanPlayFinalNarration(false)
+
+    const audio = new Audio(q13CiAnswerFeedback)
+    audio.play().catch(() => {})
+    audio.onended = () => {
+      setCanPlayFinalNarration(true)
+    }
+
+    return () => {
+      audio.onended = null
+      audio.pause()
+      audio.currentTime = 0
+    }
+  }, [answers[13], soundEnabled])
 
   return (
     <div className="scene-container">

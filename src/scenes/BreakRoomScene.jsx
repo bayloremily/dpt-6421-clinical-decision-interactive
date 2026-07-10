@@ -17,6 +17,7 @@ import breakroomCi2 from '../../assets/VO/Breakroom_CI_2.mp3'
 import breakroomCi3 from '../../assets/VO/Breakroom_CI_3.mp3'
 import breakroomCi4 from '../../assets/VO/Breakroom_CI_4.mp3'
 import { useAutoAudio } from '../hooks/useAutoAudio'
+import breakroomImage from '../../assets/breakroom.jpeg'
 
 export default function BreakRoomScene() {
   const { goToDevLocation, soundEnabled } = useContext(QuizContext)
@@ -146,7 +147,7 @@ export default function BreakRoomScene() {
       <div className="breakroom-scene">
         <div className="breakroom-backdrop">
           <ImageWithPlaceholder
-            src="/assets/breakroom.jpeg"
+            src={breakroomImage}
             alt="Physical therapy clinic break room with seating and bulletin boards"
             className="breakroom-image"
           />

@@ -6,6 +6,7 @@ import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import { useAutoAudio } from '../hooks/useAutoAudio'
 import './RotationWelcomeScene.css'
 import slide0Narration from '../../assets/VO/Slide_0_Narration.mp3'
+import clinicImage from '../../assets/clinic.jpeg'
 
 export default function RotationWelcomeScene() {
   const { goToDevLocation } = useContext(QuizContext)
@@ -19,7 +20,7 @@ export default function RotationWelcomeScene() {
       <div className="scene-content rotation-welcome-content">
         <div className="rotation-welcome-hero">
           <ImageWithPlaceholder
-            src="/assets/clinic.jpeg"
+            src={clinicImage}
             alt="Outpatient clinic environment"
             className="rotation-welcome-image"
           />

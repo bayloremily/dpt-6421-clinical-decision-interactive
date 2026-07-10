@@ -6,6 +6,7 @@ import QuestionCard from '../components/QuestionCard'
 import AccessibleFigure from '../components/AccessibleFigure'
 import { mixedModelTablesDescription } from '../content/accessibleDescriptions'
 import './FunctionalDisabilityScene.css'
+import question11GraphImage from '../../assets/question-11-correct-graph.png'
 
 export default function FunctionalDisabilityScene() {
   const { goToScene, answers, handleAnswer } = useContext(QuizContext)
@@ -50,13 +51,12 @@ export default function FunctionalDisabilityScene() {
 
           <div className="odi-article-section">
             <AccessibleFigure
-              src="/assets/question-11-correct-graph.png"
+              src={question11GraphImage}
               alt="Study results image showing ODI values and mixed-model ANOVA findings"
               title="ODI Results and Mixed-Model Tables"
               longDescription={mixedModelTablesDescription}
               imageClassName="odi-image"
               zoomLabel="View Study Article"
-              summaryLabel="Read ODI long description"
             />
           </div>
         </Card>

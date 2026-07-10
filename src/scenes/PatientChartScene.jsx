@@ -10,6 +10,8 @@ import { bodyChartDescription } from '../content/accessibleDescriptions'
 import './PatientChartScene.css'
 import slide1Narration from '../../assets/VO/Slide_1_Narration.mp3'
 import slide2Narration from '../../assets/VO/Slide_2_Narration.mp3'
+import laptopNoteImage from '../../assets/laptop-note.jpeg'
+import bodyChartImage from '../../assets/BodyChart.png'
 
 export default function PatientChartScene() {
   const {
@@ -92,7 +94,7 @@ export default function PatientChartScene() {
               <Card className="question-transition-card">
                 <div className="question-transition-media">
                   <ImageWithPlaceholder
-                    src="/assets/laptop-note.jpeg"
+                    src={laptopNoteImage}
                     alt="Laptop and research notes representing a literature search"
                     className="question-transition-image"
                   />
@@ -229,14 +231,13 @@ export default function PatientChartScene() {
               <div className="tab-pane">
                 <h3>Body Chart</h3>
                 <AccessibleFigure
-                  src="/assets/BodyChart.png"
+                  src={bodyChartImage}
                   alt="Hand-drawn body chart with front, back, and side views, showing blue markings and handwritten pain notes"
                   title="Body Chart"
                   longDescription={bodyChartDescription}
                   imageClassName="body-chart-image"
                   modalImageClassName="body-chart-modal-image"
                   zoomLabel="Zoom In on Body Chart"
-                  summaryLabel="Read body chart long description"
                 />
               </div>
             )}

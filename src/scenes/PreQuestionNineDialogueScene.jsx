@@ -10,6 +10,7 @@ import hospitalAmbience from '../../assets/sounds/Hospital_Ambience_source_10444
 import preQuestionNineAudio from '../../assets/VO/Pre-Question_9_Narration_4.mp3'
 import dialogue2Ci1 from '../../assets/VO/Dialogue_2_CI_1.mp3'
 import dialogue2Ci2 from '../../assets/VO/Dialogue_2_CI_2.mp3'
+import breakroomImage from '../../assets/breakroom.jpeg'
 
 export default function PreQuestionNineDialogueScene() {
   const { goToDevLocation } = useContext(QuizContext)
@@ -68,7 +69,7 @@ export default function PreQuestionNineDialogueScene() {
       <div className="pre-question-nine-scene">
         <div className="pre-question-nine-backdrop">
           <ImageWithPlaceholder
-            src="/assets/breakroom.jpeg"
+            src={breakroomImage}
             alt="Clinic break room used for a quick conversation with the clinical instructor"
             className="pre-question-nine-image"
           />

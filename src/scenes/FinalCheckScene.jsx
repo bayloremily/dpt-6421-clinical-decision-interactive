@@ -16,6 +16,7 @@ import q13Ci1 from '../../assets/VO/Q_13_CI_1.mp3'
 import q13Ci2 from '../../assets/VO/Q_13_CI_2.mp3'
 import q13CiAnswerFeedback from '../../assets/VO/Q_13_CI_Answer_Feedback.mp3'
 import { useAutoAudio } from '../hooks/useAutoAudio'
+import breakroomImage from '../../assets/breakroom.jpeg'
 
 export default function FinalCheckScene() {
   const { goToScene, answers, handleAnswer, soundEnabled } = useContext(QuizContext)
@@ -147,7 +148,7 @@ export default function FinalCheckScene() {
       <div className="final-check-scene">
         <div className="final-check-backdrop">
           <ImageWithPlaceholder
-            src="/assets/breakroom.jpeg"
+            src={breakroomImage}
             alt="Clinic break room as lunch wraps up before the patient arrives"
             className="final-check-image"
           />

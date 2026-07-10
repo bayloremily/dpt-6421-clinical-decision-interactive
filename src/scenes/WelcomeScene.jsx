@@ -3,6 +3,7 @@ import { QuizContext } from '../context/QuizContext'
 import Button from '../components/Button'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import './WelcomeScene.css'
+import clinicImage from '../../assets/clinic.jpeg'
 
 export default function WelcomeScene() {
   const { goToScene } = useContext(QuizContext)
@@ -15,7 +16,7 @@ export default function WelcomeScene() {
     <div className="scene-container">
       <div className="welcome-hero">
         <ImageWithPlaceholder
-          src="/assets/clinic.jpeg"
+          src={clinicImage}
           alt="Physical therapy clinic with treatment equipment"
           className="hero-image"
         />

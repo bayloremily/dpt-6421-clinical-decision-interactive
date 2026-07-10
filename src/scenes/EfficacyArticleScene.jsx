@@ -5,6 +5,7 @@ import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import './EfficacyArticleScene.css'
+import efficacyArticleImage from '../../assets/efficacy-article.png'
 
 export default function EfficacyArticleScene() {
   const { goToScene, answers, handleAnswer, showImageModal } = useContext(QuizContext)
@@ -16,7 +17,7 @@ export default function EfficacyArticleScene() {
   const handleViewArticle = () => {
     showImageModal(
       <ImageWithPlaceholder
-        src="/assets/efficacy-article.png"
+        src={efficacyArticleImage}
         alt="Efficacy article examining treatment outcomes and generalizability"
       />
     )
@@ -44,7 +45,7 @@ export default function EfficacyArticleScene() {
           <div className="article-section">
             <h4>Study Article</h4>
             <ImageWithPlaceholder
-              src="/assets/efficacy-article.png"
+              src={efficacyArticleImage}
               alt="ELDesoky 2016 article showing neural mobilization outcomes"
               className="article-image"
               onClick={handleViewArticle}

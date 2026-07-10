@@ -6,6 +6,7 @@ import QuestionCard from '../components/QuestionCard'
 import AccessibleFigure from '../components/AccessibleFigure'
 import { mixedModelTablesDescription } from '../content/accessibleDescriptions'
 import './ResultsInterpretationScene.css'
+import question11GraphImage from '../../assets/question-11-correct-graph.png'
 
 export default function ResultsInterpretationScene() {
   const { goToScene, answers, handleAnswer } = useContext(QuizContext)
@@ -52,13 +53,12 @@ export default function ResultsInterpretationScene() {
 
           <div className="graph-preview">
             <AccessibleFigure
-              src="/assets/question-11-correct-graph.png"
+              src={question11GraphImage}
               alt="Study results image showing descriptive outcome values and mixed-model ANOVA findings"
               title="Clinical Interpretation Graph"
               longDescription={mixedModelTablesDescription}
               imageClassName="graph-image"
               zoomLabel="View Full Graph"
-              summaryLabel="Read graph long description"
             />
           </div>
         </Card>

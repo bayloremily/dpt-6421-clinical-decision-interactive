@@ -11,6 +11,7 @@ import keyboardCue from '../../assets/sounds/MA_SoundsByGfxSounds_OfficeKeyboard
 import dialogue3Ci1 from '../../assets/VO/Dialogue_3_CI_1.mp3'
 import dialogue3Ci2 from '../../assets/VO/Dialogue_3_CI_2.mp3'
 import { useAutoAudio } from '../hooks/useAutoAudio'
+import breakroomImage from '../../assets/breakroom.jpeg'
 
 export default function StudyDialogueScene() {
   const { goToScene } = useContext(QuizContext)
@@ -71,7 +72,7 @@ export default function StudyDialogueScene() {
       <div className="study-dialogue-scene">
         <div className="study-dialogue-backdrop">
           <ImageWithPlaceholder
-            src="/assets/breakroom.jpeg"
+            src={breakroomImage}
             alt="Clinic break room used for a discussion with the clinical instructor"
             className="study-dialogue-image"
           />

@@ -4,6 +4,7 @@ import Card from '../components/Card'
 import Button from '../components/Button'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import './LiteratureSearchScene.css'
+import literatureArticleImage from '../../assets/literature-article.png'
 
 export default function LiteratureSearchScene() {
   const {
@@ -41,7 +42,7 @@ export default function LiteratureSearchScene() {
   const handleViewImage = () => {
     showImageModal(
       <ImageWithPlaceholder
-        src="/assets/literature-article.png"
+        src={literatureArticleImage}
         alt="Literature article search result showing peer-reviewed clinical study"
       />
     )
@@ -112,7 +113,7 @@ export default function LiteratureSearchScene() {
                 </p>
                 <div className="result-preview">
                   <ImageWithPlaceholder
-                    src="/assets/literature-article.png"
+                    src={literatureArticleImage}
                     alt="Literature article preview"
                     className="preview-image"
                   />

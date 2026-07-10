@@ -6,6 +6,7 @@ import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import { useAutoAudio } from '../hooks/useAutoAudio'
 import './DiagnosticSummaryScene.css'
 import preLunchroomNarration from '../../assets/VO/Pre_Lunchroom_3_Narration.mp3'
+import laptopNoteImage from '../../assets/laptop-note.jpeg'
 
 export default function DiagnosticSummaryScene() {
   const { goToScene } = useContext(QuizContext)
@@ -55,7 +56,7 @@ export default function DiagnosticSummaryScene() {
 
           <Card className="diagnostic-summary-sidecar">
             <ImageWithPlaceholder
-              src="/assets/laptop-note.jpeg"
+              src={laptopNoteImage}
               alt="Laptop and notes used to review clinical research"
               className="diagnostic-summary-image"
             />

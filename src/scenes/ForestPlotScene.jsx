@@ -6,6 +6,8 @@ import QuestionCard from '../components/QuestionCard'
 import AccessibleFigure from '../components/AccessibleFigure'
 import { forestPlotDescription } from '../content/accessibleDescriptions'
 import './ForestPlotScene.css'
+import neuralArticleImage from '../../assets/neural-article.png'
+import figure2Image from '../../assets/figure-2.png'
 
 export default function ForestPlotScene() {
   const {
@@ -72,7 +74,7 @@ export default function ForestPlotScene() {
             <div className="image-item">
               <p className="image-label">Study Overview</p>
               <AccessibleFigure
-                src="/assets/neural-article.png"
+                src={neuralArticleImage}
                 alt="Systematic review article overview for neural mobilization in lumbar radiculopathy"
                 title="Study Overview"
                 longDescription={
@@ -83,20 +85,18 @@ export default function ForestPlotScene() {
                 }
                 imageClassName="article-thumbnail"
                 zoomLabel="Zoom Study Overview"
-                summaryLabel="Read study overview image description"
               />
             </div>
 
             <div className="image-item">
               <p className="image-label">Forest Plot Results</p>
               <AccessibleFigure
-                src="/assets/figure-2.png"
+                src={figure2Image}
                 alt="Forest plot showing individual study results and pooled effect size"
                 title="Forest Plot Results"
                 longDescription={forestPlotDescription}
                 imageClassName="article-thumbnail"
                 zoomLabel="Zoom Forest Plot"
-                summaryLabel="Read forest plot long description"
               />
             </div>
           </div>

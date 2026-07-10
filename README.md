@@ -113,6 +113,25 @@ Preview the production build locally:
 npm run preview
 ```
 
+## GitHub Pages Deployment
+
+This project is deployed to GitHub Pages from GitHub Actions.
+
+- Vite is configured with `base: "/dpt-6421-clinical-decision-interactive/"`
+- Production assets are imported through Vite so they resolve correctly under the repository subpath
+- The deployment workflow lives at `.github/workflows/deploy.yml`
+- GitHub Pages should be configured under:
+  `Repository Settings -> Pages -> Build and deployment -> Source: GitHub Actions`
+
+The standard deployment flow is:
+
+```bash
+npm ci
+npm run build
+```
+
+The workflow then uploads `dist/` and deploys it with `actions/deploy-pages`.
+
 ## Tech Stack
 
 - React 18

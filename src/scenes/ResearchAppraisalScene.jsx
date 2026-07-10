@@ -5,6 +5,8 @@ import QuestionCard from '../components/QuestionCard'
 import ImageWithPlaceholder from '../components/ImageWithPlaceholder'
 import { sensoryTableDescription } from '../content/accessibleDescriptions'
 import './ResearchAppraisalScene.css'
+import table1Image from '../../assets/table-1.png'
+import table3Image from '../../assets/table-3.png'
 
 export default function ResearchAppraisalScene() {
   const {
@@ -25,7 +27,7 @@ export default function ResearchAppraisalScene() {
       correct: 'QUADAS',
       hint: 'This tool is specifically designed for diagnostic accuracy studies.',
       showImageOn: 'correct',
-      image: '/assets/table-1.png',
+      image: table1Image,
       imageAlt: 'QUADAS quality assessment table for diagnostic studies',
     },
     {
@@ -54,7 +56,7 @@ export default function ResearchAppraisalScene() {
       correct: 'Sensitivity is poor and specificity is good',
       hint: 'This means the test is better at ruling IN a condition than ruling it OUT.',
       showImageOn: 'correct',
-      image: '/assets/table-3.png',
+      image: table3Image,
       imageAlt: 'Sensitivity and specificity table for diagnostic tests',
     },
     {

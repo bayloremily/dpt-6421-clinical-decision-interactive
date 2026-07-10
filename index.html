@@ -7,6 +7,48 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module">
+      const loadModuleScript = (src) => {
+        const script = document.createElement('script')
+        script.type = 'module'
+        script.src = src
+        document.body.appendChild(script)
+      }
+
+      const loadStylesheet = (href) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = href
+        document.head.appendChild(link)
+      }
+
+      const bootstrapApp = async () => {
+        try {
+          const response = await fetch('./dist/.vite/manifest.json', { cache: 'no-store' })
+
+          if (response.ok) {
+            const manifest = await response.json()
+            const entry = manifest['src/main.jsx']
+
+            if (!entry?.file) {
+              throw new Error('Manifest entry for src/main.jsx is missing')
+            }
+
+            for (const cssFile of entry.css ?? []) {
+              loadStylesheet(`./dist/${cssFile}`)
+            }
+
+            loadModuleScript(`./dist/${entry.file}`)
+            return
+          }
+        } catch (error) {
+          console.warn('Falling back to the Vite entry module.', error)
+        }
+
+        await import('/src/main.jsx')
+      }
+
+      bootstrapApp()
+    </script>
   </body>
 </html>

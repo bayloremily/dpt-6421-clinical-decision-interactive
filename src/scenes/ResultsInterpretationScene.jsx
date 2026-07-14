@@ -3,8 +3,7 @@ import { QuizContext } from '../context/QuizContext'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
-import AccessibleFigure from '../components/AccessibleFigure'
-import { mixedModelTablesDescription } from '../content/accessibleDescriptions'
+import ImageLightbox from '../components/ImageLightbox'
 import './ResultsInterpretationScene.css'
 import question11GraphImage from '../../assets/question-11-correct-graph.png'
 
@@ -52,16 +51,12 @@ export default function ResultsInterpretationScene() {
           </div>
 
           <div className="graph-preview">
-            <AccessibleFigure
+            <ImageLightbox
               src={question11GraphImage}
               alt="Study results image showing descriptive outcome values and mixed-model ANOVA findings"
               title="Clinical Interpretation Graph"
-              longDescription={mixedModelTablesDescription}
               imageClassName="graph-image"
-              modalImageClassName="modal-large-image modal-graph-image"
-              modalImageFrameClassName="graph-modal-frame"
-              modalContentClassName="modal-content-wide"
-              zoomLabel="View Full Graph"
+              buttonLabel="View Larger"
             />
           </div>
         </Card>

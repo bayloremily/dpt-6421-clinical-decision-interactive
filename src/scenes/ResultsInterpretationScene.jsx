@@ -4,6 +4,7 @@ import Card from '../components/Card'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
 import ImageLightbox from '../components/ImageLightbox'
+import { mixedModelTablesDescription } from '../content/accessibleDescriptions'
 import './ResultsInterpretationScene.css'
 import question11GraphImage from '../../assets/question-11-correct-graph.png'
 
@@ -55,6 +56,7 @@ export default function ResultsInterpretationScene() {
               src={question11GraphImage}
               alt="Study results image showing descriptive outcome values and mixed-model ANOVA findings"
               title="Clinical Interpretation Graph"
+              longDescription={mixedModelTablesDescription}
               imageClassName="graph-image"
               buttonLabel="View Larger"
             />

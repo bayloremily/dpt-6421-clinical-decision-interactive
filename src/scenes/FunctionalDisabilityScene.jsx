@@ -4,6 +4,7 @@ import Card from '../components/Card'
 import Button from '../components/Button'
 import QuestionCard from '../components/QuestionCard'
 import ImageLightbox from '../components/ImageLightbox'
+import { mixedModelTablesDescription } from '../content/accessibleDescriptions'
 import './FunctionalDisabilityScene.css'
 import question11GraphImage from '../../assets/question-11-correct-graph.png'
 
@@ -53,6 +54,7 @@ export default function FunctionalDisabilityScene() {
               src={question11GraphImage}
               alt="Study results image showing ODI values and mixed-model ANOVA findings"
               title="ODI Results and Mixed-Model Tables"
+              longDescription={mixedModelTablesDescription}
               imageClassName="odi-image"
               buttonLabel="View Larger"
             />

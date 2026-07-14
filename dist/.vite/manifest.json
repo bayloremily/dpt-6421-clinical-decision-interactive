@@ -160,7 +160,7 @@
     "src": "assets/table-3.png"
   },
   "index.html": {
-    "file": "assets/index-DXONosng.js",
+    "file": "assets/index-CgHX41P6.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -169,12 +169,12 @@
     ]
   },
   "src/main.jsx": {
-    "file": "assets/main-Dz0vLugD.js",
+    "file": "assets/main-sVY07IwM.js",
     "name": "main",
     "src": "src/main.jsx",
     "isDynamicEntry": true,
     "css": [
-      "assets/main-Dvjnm9yR.css"
+      "assets/main-DzVuBCt0.css"
     ],
     "assets": [
       "assets/clinic-C6HQCW_a.jpeg",

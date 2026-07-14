@@ -11,6 +11,7 @@ export default function ImageLightbox({
   src,
   alt,
   title,
+  longDescription = null,
   imageClassName = '',
   buttonLabel = 'View Larger',
 }) {
@@ -207,6 +208,12 @@ export default function ImageLightbox({
                     style={{ width: `${zoomLevel}%` }}
                   />
                 </div>
+
+                {longDescription ? (
+                  <div className="image-lightbox-description">
+                    {longDescription}
+                  </div>
+                ) : null}
               </div>
             </div>,
             document.body

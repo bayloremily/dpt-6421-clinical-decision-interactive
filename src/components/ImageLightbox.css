@@ -97,6 +97,24 @@
   margin: 0 auto;
 }
 
+.image-lightbox-description {
+  padding: 0 32px 32px;
+  line-height: 1.7;
+}
+
+.image-lightbox-description h4 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--baylor-green);
+}
+
+.image-lightbox-description p {
+  margin-bottom: var(--spacing-md);
+}
+
+.image-lightbox-description ul {
+  margin: 0 0 var(--spacing-md) 1.25rem;
+}
+
 @media (max-width: 768px) {
   .image-lightbox-panel {
     width: calc(100vw - 24px);
@@ -117,5 +135,9 @@
 
   .image-lightbox-image.responsive-image {
     min-width: 1100px;
+  }
+
+  .image-lightbox-description {
+    padding: 0 24px 24px;
   }
 }

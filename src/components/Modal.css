@@ -87,7 +87,7 @@
 }
 
 .modal-content.modal-content-wide {
-  width: min(96vw, 1400px);
+  width: min(99vw, 1800px);
 }
 
 .accessible-modal-content {

@@ -60,6 +60,7 @@ export default function ResultsInterpretationScene() {
               imageClassName="graph-image"
               modalImageClassName="modal-large-image"
               modalContentClassName="modal-content-wide"
+              enableModalZoomControls
               zoomLabel="View Full Graph"
             />
           </div>

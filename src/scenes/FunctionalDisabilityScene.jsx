@@ -58,6 +58,7 @@ export default function FunctionalDisabilityScene() {
               imageClassName="odi-image"
               modalImageClassName="modal-large-image"
               modalContentClassName="modal-content-wide"
+              enableModalZoomControls
               zoomLabel="View Study Article"
             />
           </div>

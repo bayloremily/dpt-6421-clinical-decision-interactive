@@ -53,14 +53,36 @@
   gap: var(--spacing-lg);
 }
 
+.accessible-figure-modal-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.accessible-figure-zoom-value {
+  min-width: 4.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--baylor-green);
+}
+
+.accessible-figure-modal-image-frame {
+  overflow: auto;
+  max-height: 78vh;
+  padding: var(--spacing-sm);
+}
+
 .accessible-figure-modal .responsive-image {
   margin: 0 auto;
 }
 
 .accessible-figure-modal .responsive-image.modal-large-image {
   width: min(100%, 1280px);
-  max-height: 78vh;
+  max-height: none;
   object-fit: contain;
+  transition: transform 0.2s ease;
 }
 
 .accessible-figure-modal-description {

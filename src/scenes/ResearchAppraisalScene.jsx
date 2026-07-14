@@ -137,6 +137,20 @@ export default function ResearchAppraisalScene() {
           />
         </div>
 
+        {currentQ.number === 5 ? (
+          <div className="research-reference-card">
+            <h3>Table 3: Diagnostic Sensory Testing</h3>
+            <ImageWithPlaceholder
+              src={table3Image}
+              alt="Sensitivity and specificity table for diagnostic tests"
+              className="research-reference-image"
+            />
+            <Button onClick={handleOpenCurrentReference} variant="secondary">
+              View Table 3 with Long Description
+            </Button>
+          </div>
+        ) : null}
+
         <QuestionCard
           questionNumber={currentQ.number}
           title={currentQ.title}
@@ -161,11 +175,6 @@ export default function ResearchAppraisalScene() {
               <div className="success-message" role="status" aria-live="polite">
                 <p>Great! You've understood this concept.</p>
               </div>
-            ) : null}
-            {isCurrentCorrect && currentQ.number === 5 ? (
-              <Button onClick={handleOpenCurrentReference} variant="secondary">
-                Review Table 3 with Long Description
-              </Button>
             ) : null}
             <Button onClick={handleNextQuestion} size="lg">
               {currentQuestion === 6 ? 'Continue' : 'Next Question'}

@@ -38,7 +38,7 @@ The application is built as a lightweight React + Vite single-page interactive w
 - Voiceover, CI dialogue, ambient, and cue sound effects across major scenes
 - Global sound on/off control for accessibility
 - Modal-based viewing of clinical figures and article images
-- Zoomable body chart and research figures
+- Enlarged lightbox viewing for key research figures
 - Screen-reader-friendly long descriptions for complex charts and tables
 - Final summary screen with case completion score
 - Restart flow for repeated use in teaching or self-study
@@ -71,7 +71,7 @@ The current build includes several accessibility-focused enhancements:
 - Audio handoff logic so advancing quickly stops the prior clip cleanly
 - Low-volume environmental SFX mixed underneath narration and CI dialogue
 - Text alternatives for complex charts, tables, and figures
-- Modal access to enlarged chart and article views
+- Portal-based enlarged graph views for Questions 11 and 12 with long descriptions
 
 These updates improve accessibility significantly, but they do not replace a full WCAG audit across every interaction pattern and assistive technology workflow.
 
@@ -141,8 +141,8 @@ The workflow then uploads `dist/` and deploys it with `actions/deploy-pages`.
 ## Notes
 
 - macOS metadata files are excluded from version control through `.gitignore`.
-- Existing macOS resource-fork files such as `._*` and `.DS_Store` should be cleaned before commits if they appear locally.
-- Build output is generated into `dist/` and should not be committed.
+- Existing macOS resource-fork files such as `._*`, `.DS_Store`, and `~$*` should be cleaned before commits if they appear locally.
+- This repository currently tracks `dist/` because the GitHub Pages fallback deployment path depends on built output being present in the repository.
 - Dialogue scene sound effects are intentionally mixed at low volume for development.
 
 ## Repository

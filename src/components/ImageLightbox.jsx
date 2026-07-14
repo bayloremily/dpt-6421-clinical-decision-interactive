@@ -1,11 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import Button from './Button'
 import ImageWithPlaceholder from './ImageWithPlaceholder'
 import './ImageLightbox.css'
-
-const ZOOM_LEVELS = [75, 100, 125, 150, 175, 200]
-const DEFAULT_ZOOM = 150
 
 export default function ImageLightbox({
   src,
@@ -16,38 +12,17 @@ export default function ImageLightbox({
   buttonLabel = 'View Larger',
 }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [zoomLevel, setZoomLevel] = useState(DEFAULT_ZOOM)
   const titleId = useId()
   const triggerRef = useRef(null)
   const panelRef = useRef(null)
   const closeButtonRef = useRef(null)
 
-  const currentZoomIndex = ZOOM_LEVELS.indexOf(zoomLevel)
-
   const openLightbox = () => {
-    setZoomLevel(DEFAULT_ZOOM)
     setIsOpen(true)
   }
 
   const closeLightbox = () => {
     setIsOpen(false)
-  }
-
-  const setZoomByIndex = (nextIndex) => {
-    const boundedIndex = Math.max(0, Math.min(nextIndex, ZOOM_LEVELS.length - 1))
-    setZoomLevel(ZOOM_LEVELS[boundedIndex])
-  }
-
-  const handleZoomIn = () => {
-    setZoomByIndex(currentZoomIndex + 1)
-  }
-
-  const handleZoomOut = () => {
-    setZoomByIndex(currentZoomIndex - 1)
-  }
-
-  const handleReset = () => {
-    setZoomLevel(DEFAULT_ZOOM)
   }
 
   useEffect(() => {
@@ -73,24 +48,6 @@ export default function ImageLightbox({
         return
       }
 
-      if (event.key === '0') {
-        event.preventDefault()
-        handleReset()
-        return
-      }
-
-      if (event.key === '+' || event.key === '=') {
-        event.preventDefault()
-        handleZoomIn()
-        return
-      }
-
-      if (event.key === '-' || event.key === '_') {
-        event.preventDefault()
-        handleZoomOut()
-        return
-      }
-
       if (event.key !== 'Tab') return
 
       const focusableElements = panelRef.current?.querySelectorAll(
@@ -113,19 +70,7 @@ export default function ImageLightbox({
 
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [currentZoomIndex, isOpen])
-
-  const handleWheel = (event) => {
-    if (!event.ctrlKey && !event.metaKey) return
-
-    event.preventDefault()
-
-    if (event.deltaY < 0) {
-      handleZoomIn()
-    } else if (event.deltaY > 0) {
-      handleZoomOut()
-    }
-  }
+  }, [isOpen])
 
   return (
     <>
@@ -157,7 +102,6 @@ export default function ImageLightbox({
               <div
                 className="image-lightbox-panel"
                 onClick={(event) => event.stopPropagation()}
-                onWheel={handleWheel}
                 ref={panelRef}
                 role="dialog"
                 aria-modal="true"
@@ -177,35 +121,11 @@ export default function ImageLightbox({
                   </button>
                 </div>
 
-                <div className="image-lightbox-toolbar" aria-label="Image zoom controls">
-                  <Button
-                    onClick={handleZoomOut}
-                    variant="secondary"
-                    disabled={currentZoomIndex <= 0}
-                  >
-                    Zoom Out
-                  </Button>
-                  <Button onClick={handleReset} variant="secondary">
-                    Reset
-                  </Button>
-                  <Button
-                    onClick={handleZoomIn}
-                    variant="secondary"
-                    disabled={currentZoomIndex >= ZOOM_LEVELS.length - 1}
-                  >
-                    Zoom In
-                  </Button>
-                  <span className="image-lightbox-zoom-value" aria-live="polite">
-                    {zoomLevel}%
-                  </span>
-                </div>
-
                 <div className="image-lightbox-viewport">
                   <ImageWithPlaceholder
                     src={src}
                     alt={alt}
                     className="image-lightbox-image"
-                    style={{ width: `${zoomLevel}%` }}
                   />
                 </div>
 

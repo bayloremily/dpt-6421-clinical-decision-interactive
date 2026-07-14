@@ -63,32 +63,34 @@ export default function ForestPlotScene() {
         <h1>Meta-Analysis Results</h1>
         <p className="subtitle">Interpret the forest plot and treatment efficacy</p>
 
-        <Card className="results-overview">
-          <h3>Systematic Review: Neural Mobilization for Radiculopathy</h3>
-          <p>
-            Multiple randomized controlled trials have been synthesized to determine the
-            pooled effect of neural mobilization compared to control interventions.
-          </p>
+        {currentQuestion !== 9 ? (
+          <Card className="results-overview">
+            <h3>Systematic Review: Neural Mobilization for Radiculopathy</h3>
+            <p>
+              Multiple randomized controlled trials have been synthesized to determine the
+              pooled effect of neural mobilization compared to control interventions.
+            </p>
 
-          <div className="image-grid">
-            <div className="image-item">
-              <p className="image-label">Study Overview</p>
-              <AccessibleFigure
-                src={neuralArticleImage}
-                alt="Systematic review article overview for neural mobilization in lumbar radiculopathy"
-                title="Study Overview"
-                longDescription={
-                  <p>
-                    Article preview image for the systematic review and meta-analysis on
-                    neural mobilization in patients with lumbar radiculopathy.
-                  </p>
-                }
-                imageClassName="article-thumbnail"
-                zoomLabel="Zoom Study Overview"
-              />
+            <div className="image-grid">
+              <div className="image-item">
+                <p className="image-label">Study Overview</p>
+                <AccessibleFigure
+                  src={neuralArticleImage}
+                  alt="Systematic review article overview for neural mobilization in lumbar radiculopathy"
+                  title="Study Overview"
+                  longDescription={
+                    <p>
+                      Article preview image for the systematic review and meta-analysis on
+                      neural mobilization in patients with lumbar radiculopathy.
+                    </p>
+                  }
+                  imageClassName="article-thumbnail"
+                  zoomLabel="Zoom Study Overview"
+                />
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        ) : null}
 
         <div className="forest-plot-question-figure">
           <p className="image-label">Forest Plot Results</p>

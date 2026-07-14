@@ -76,8 +76,12 @@ export default function ResearchAppraisalScene() {
 
   const handleAnswerQuestion = (answer) => {
     handleAnswer(currentQuestion, answer)
-    // If correct and there's an image to show
-    if (answer === currentQ.correct && currentQ.showImageOn === 'correct') {
+    // For earlier questions, keep the existing modal reveal on correct answers.
+    if (
+      currentQ.number !== 5 &&
+      answer === currentQ.correct &&
+      currentQ.showImageOn === 'correct'
+    ) {
       setTimeout(() => {
         showImageModal(
           <div className="accessible-modal-content">

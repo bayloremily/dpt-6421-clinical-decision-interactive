@@ -74,6 +74,10 @@
   padding: var(--spacing-sm);
 }
 
+.accessible-figure-modal-image-frame.graph-modal-frame {
+  max-height: none;
+}
+
 .accessible-figure-modal .responsive-image {
   margin: 0 auto;
 }
@@ -83,6 +87,10 @@
   max-height: none;
   object-fit: contain;
   transition: transform 0.2s ease;
+}
+
+.accessible-figure-modal .responsive-image.modal-graph-image {
+  width: min(100%, 1600px);
 }
 
 .accessible-figure-modal-description {

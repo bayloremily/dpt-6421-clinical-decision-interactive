@@ -16,6 +16,7 @@ export default function AccessibleFigure({
   longDescription,
   imageClassName = '',
   modalImageClassName = '',
+  modalImageFrameClassName = '',
   modalContentClassName = '',
   enableModalZoomControls = false,
   zoomLabel = 'Zoom Image',
@@ -94,7 +95,9 @@ export default function AccessibleFigure({
                   </Button>
                 </div>
               ) : null}
-              <div className="accessible-figure-modal-image-frame">
+              <div
+                className={`accessible-figure-modal-image-frame ${modalImageFrameClassName}`.trim()}
+              >
                 <ImageWithPlaceholder
                   src={src}
                   alt={alt}

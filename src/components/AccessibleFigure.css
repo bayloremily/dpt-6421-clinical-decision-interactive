@@ -53,6 +53,16 @@
   gap: var(--spacing-lg);
 }
 
+.accessible-figure-modal .responsive-image {
+  margin: 0 auto;
+}
+
+.accessible-figure-modal .responsive-image.modal-large-image {
+  width: min(100%, 1280px);
+  max-height: 78vh;
+  object-fit: contain;
+}
+
 .accessible-figure-modal-description {
   line-height: 1.7;
 }

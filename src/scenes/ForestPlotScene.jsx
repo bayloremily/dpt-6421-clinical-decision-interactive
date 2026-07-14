@@ -87,21 +87,22 @@ export default function ForestPlotScene() {
                 zoomLabel="Zoom Study Overview"
               />
             </div>
-
-            <div className="image-item">
-              <p className="image-label">Forest Plot Results</p>
-              <AccessibleFigure
-                src={figure2Image}
-                alt="Forest plot showing individual study results and pooled effect size"
-                title="Forest Plot Results"
-                longDescription={forestPlotDescription}
-                imageClassName="article-thumbnail"
-                zoomLabel="Zoom Forest Plot"
-              />
-            </div>
           </div>
-
         </Card>
+
+        <div className="forest-plot-question-figure">
+          <p className="image-label">Forest Plot Results</p>
+          <AccessibleFigure
+            src={figure2Image}
+            alt="Forest plot showing individual study results and pooled effect size"
+            title="Forest Plot Results"
+            longDescription={forestPlotDescription}
+            imageClassName="forest-plot-question-image"
+            modalImageClassName="modal-large-image"
+            modalContentClassName="modal-content-wide"
+            zoomLabel="View Forest Plot"
+          />
+        </div>
 
         <QuestionCard
           questionNumber={currentQ.number}

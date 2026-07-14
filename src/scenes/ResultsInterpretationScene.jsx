@@ -58,6 +58,8 @@ export default function ResultsInterpretationScene() {
               title="Clinical Interpretation Graph"
               longDescription={mixedModelTablesDescription}
               imageClassName="graph-image"
+              modalImageClassName="modal-large-image"
+              modalContentClassName="modal-content-wide"
               zoomLabel="View Full Graph"
             />
           </div>

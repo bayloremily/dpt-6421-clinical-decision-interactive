@@ -56,6 +56,8 @@ export default function FunctionalDisabilityScene() {
               title="ODI Results and Mixed-Model Tables"
               longDescription={mixedModelTablesDescription}
               imageClassName="odi-image"
+              modalImageClassName="modal-large-image"
+              modalContentClassName="modal-content-wide"
               zoomLabel="View Study Article"
             />
           </div>

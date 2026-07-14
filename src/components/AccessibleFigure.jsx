@@ -11,6 +11,7 @@ export default function AccessibleFigure({
   longDescription,
   imageClassName = '',
   modalImageClassName = '',
+  modalContentClassName = '',
   zoomLabel = 'Zoom Image',
 }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -47,6 +48,7 @@ export default function AccessibleFigure({
 
       {isOpen && (
         <Modal
+          className={modalContentClassName}
           onClose={() => setIsOpen(false)}
           content={
             <div className="accessible-figure-modal">

@@ -12,7 +12,7 @@ const correctAnswers = {
   3: 'Spectrum Bias',
   4: 'Delve into the results section',
   5: 'Sensitivity is poor and specificity is good',
-  6: 'Ruling IN lumbar radiculopathy',
+  6: 'Ruling in lumbar radiculopathy',
   7: 'B. Systematic review and meta-analysis',
   8: 'Yes',
   9: 'ELDesoky 2016',
@@ -56,7 +56,7 @@ export default function FinalScene() {
           <Card className="takeaway-card">
             <h3>What This Case Reinforced</h3>
             <ul className="takeaway-list">
-              <li>Review the full patient story before committing to an exam focus.</li>
+              <li>Review the patient history before committing to an exam focus.</li>
               <li>Search literature with focused diagnosis and treatment terms.</li>
               <li>Appraise diagnostic and treatment evidence before applying it.</li>
               <li>Use external validity to judge whether results fit your patient.</li>

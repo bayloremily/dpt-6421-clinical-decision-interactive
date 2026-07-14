@@ -86,6 +86,10 @@
   border-radius: var(--radius-lg);
 }
 
+.modal-content.modal-content-wide {
+  width: min(96vw, 1400px);
+}
+
 .accessible-modal-content {
   display: flex;
   flex-direction: column;

@@ -32,7 +32,8 @@ export default function ResearchAppraisalScene() {
     },
     {
       number: 3,
-      title: 'Severe nerve compression only on MRI without symptoms is a case of:',
+      title:
+        'If one of the studies only included participants with severe nerve compression on MRI, this would be a case of:',
       options: ['Spectrum Bias', 'Work-up Bias', 'Lack of blinding'],
       correct: 'Spectrum Bias',
       hint: 'This occurs when findings differ between asymptomatic and symptomatic populations.',
@@ -63,10 +64,10 @@ export default function ResearchAppraisalScene() {
       number: 6,
       title: 'Sensory testing is better at:',
       options: [
-        'Ruling IN lumbar radiculopathy',
-        'Ruling OUT lumbar radiculopathy',
+        'Ruling in lumbar radiculopathy',
+        'Ruling out lumbar radiculopathy',
       ],
-      correct: 'Ruling IN lumbar radiculopathy',
+      correct: 'Ruling in lumbar radiculopathy',
       hint: 'Think about high specificity vs high sensitivity for clinical utility.',
     },
   ]

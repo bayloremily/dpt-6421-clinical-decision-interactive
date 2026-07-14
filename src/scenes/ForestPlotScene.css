@@ -48,6 +48,19 @@
   transform: scale(1.02);
 }
 
+.forest-plot-question-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin: 0 0 var(--spacing-xl);
+}
+
+.forest-plot-question-image {
+  width: min(100%, 900px);
+  box-shadow: var(--shadow-md);
+}
+
 .view-button {
   display: block;
   margin: var(--spacing-lg) auto 0;

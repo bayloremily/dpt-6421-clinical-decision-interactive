@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import './Modal.css'
 
-export default function Modal({ content, onClose }) {
+export default function Modal({ content, onClose, className = '' }) {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
@@ -15,7 +15,7 @@ export default function Modal({ content, onClose }) {
   return (
     <div className="modal-overlay" onClick={onClose} role="presentation">
       <div
-        className="modal-content"
+        className={`modal-content ${className}`.trim()}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

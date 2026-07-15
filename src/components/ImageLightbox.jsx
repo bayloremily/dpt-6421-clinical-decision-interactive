@@ -8,6 +8,8 @@ export default function ImageLightbox({
   alt,
   title,
   longDescription = null,
+  supplementalImageSrc = null,
+  supplementalImageAlt = '',
   imageClassName = '',
   buttonLabel = 'View Larger',
 }) {
@@ -131,6 +133,13 @@ export default function ImageLightbox({
 
                 {longDescription ? (
                   <div className="image-lightbox-description">
+                    {supplementalImageSrc ? (
+                      <ImageWithPlaceholder
+                        src={supplementalImageSrc}
+                        alt={supplementalImageAlt}
+                        className="image-lightbox-description-image"
+                      />
+                    ) : null}
                     {longDescription}
                   </div>
                 ) : null}

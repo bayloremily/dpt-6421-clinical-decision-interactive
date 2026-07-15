@@ -7,6 +7,7 @@ import ImageLightbox from '../components/ImageLightbox'
 import { mixedModelTablesDescription } from '../content/accessibleDescriptions'
 import './ResultsInterpretationScene.css'
 import question11GraphImage from '../../assets/question-11-correct-graph.png'
+import table3Image from '../../assets/table-3.png'
 
 export default function ResultsInterpretationScene() {
   const { goToScene, answers, handleAnswer } = useContext(QuizContext)
@@ -57,6 +58,8 @@ export default function ResultsInterpretationScene() {
               alt="Study results image showing descriptive outcome values and mixed-model ANOVA findings"
               title="Clinical Interpretation Graph"
               longDescription={mixedModelTablesDescription}
+              supplementalImageSrc={table3Image}
+              supplementalImageAlt="Table 3 showing sensitivity and specificity values for diagnostic sensory testing"
               imageClassName="graph-image"
               buttonLabel="View Larger"
             />

@@ -7,6 +7,7 @@ import ImageLightbox from '../components/ImageLightbox'
 import { mixedModelTablesDescription } from '../content/accessibleDescriptions'
 import './FunctionalDisabilityScene.css'
 import question11GraphImage from '../../assets/question-11-correct-graph.png'
+import table3Image from '../../assets/table-3.png'
 
 export default function FunctionalDisabilityScene() {
   const { goToScene, answers, handleAnswer } = useContext(QuizContext)
@@ -55,6 +56,8 @@ export default function FunctionalDisabilityScene() {
               alt="Study results image showing ODI values and mixed-model ANOVA findings"
               title="ODI Results and Mixed-Model Tables"
               longDescription={mixedModelTablesDescription}
+              supplementalImageSrc={table3Image}
+              supplementalImageAlt="Table 3 showing sensitivity and specificity values for diagnostic sensory testing"
               imageClassName="odi-image"
               buttonLabel="View Larger"
             />

@@ -86,6 +86,13 @@
   line-height: 1.7;
 }
 
+.image-lightbox-description-image.responsive-image {
+  width: min(100%, 900px);
+  height: auto;
+  display: block;
+  margin: 0 auto 24px;
+}
+
 .image-lightbox-description h4 {
   margin-bottom: var(--spacing-sm);
   color: var(--baylor-green);

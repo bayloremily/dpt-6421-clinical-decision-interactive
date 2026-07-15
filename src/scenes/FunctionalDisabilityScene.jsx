@@ -53,10 +53,8 @@ export default function FunctionalDisabilityScene() {
             <ImageLightbox
               src={question11GraphImage}
               alt="Study results image showing ODI values and mixed-model ANOVA findings"
-              title="ODI Results and Mixed-Model Tables"
+              title="Clinical Interpretation Graph"
               longDescription={mixedModelTablesDescription}
-              supplementalImageSrc={question11GraphImage}
-              supplementalImageAlt="Study results image showing ODI values and mixed-model ANOVA findings"
               imageClassName="odi-image"
               buttonLabel="View Larger"
             />

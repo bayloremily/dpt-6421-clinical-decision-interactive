@@ -57,8 +57,6 @@ export default function ResultsInterpretationScene() {
               alt="Study results image showing descriptive outcome values and mixed-model ANOVA findings"
               title="Clinical Interpretation Graph"
               longDescription={mixedModelTablesDescription}
-              supplementalImageSrc={question11GraphImage}
-              supplementalImageAlt="Study results image showing descriptive outcome values and mixed-model ANOVA findings"
               imageClassName="graph-image"
               buttonLabel="View Larger"
             />

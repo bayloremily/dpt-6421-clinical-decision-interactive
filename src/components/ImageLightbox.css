@@ -33,6 +33,12 @@
   box-shadow: var(--shadow-lg);
 }
 
+.image-lightbox-content {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
 .image-lightbox-header {
   display: flex;
   align-items: center;
@@ -63,8 +69,6 @@
 }
 
 .image-lightbox-viewport {
-  flex: 1;
-  overflow: auto;
   padding: 32px;
   display: block;
   text-align: center;

@@ -123,26 +123,28 @@ export default function ImageLightbox({
                   </button>
                 </div>
 
-                <div className="image-lightbox-viewport">
-                  <ImageWithPlaceholder
-                    src={src}
-                    alt={alt}
-                    className="image-lightbox-image"
-                  />
-                </div>
-
-                {longDescription ? (
-                  <div className="image-lightbox-description">
-                    {supplementalImageSrc ? (
-                      <ImageWithPlaceholder
-                        src={supplementalImageSrc}
-                        alt={supplementalImageAlt}
-                        className="image-lightbox-description-image"
-                      />
-                    ) : null}
-                    {longDescription}
+                <div className="image-lightbox-content">
+                  <div className="image-lightbox-viewport">
+                    <ImageWithPlaceholder
+                      src={src}
+                      alt={alt}
+                      className="image-lightbox-image"
+                    />
                   </div>
-                ) : null}
+
+                  {longDescription ? (
+                    <div className="image-lightbox-description">
+                      {supplementalImageSrc ? (
+                        <ImageWithPlaceholder
+                          src={supplementalImageSrc}
+                          alt={supplementalImageAlt}
+                          className="image-lightbox-description-image"
+                        />
+                      ) : null}
+                      {longDescription}
+                    </div>
+                  ) : null}
+                </div>
               </div>
             </div>,
             document.body
